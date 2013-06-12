@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_time: 2013-06-12 08:37:17
+  duration: 1
+  capacity: 1
+  booked: false
+  adjourned: false
+  lesson: 
+
+two:
+  start_time: 2013-06-12 08:37:17
+  duration: 1
+  capacity: 1
+  booked: false
+  adjourned: false
+  lesson: 

@@ -1,0 +1,2 @@
+class Offer < Lesson
+end

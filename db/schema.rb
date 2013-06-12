@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612040733) do
+ActiveRecord::Schema.define(:version => 20130612145245) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,48 @@ ActiveRecord::Schema.define(:version => 20130612040733) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "lessons", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.integer  "amount"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "lessons", ["user_id"], :name => "index_lessons_on_user_id"
+
+  create_table "meetings", :force => true do |t|
+    t.datetime "start_time"
+    t.integer  "duration"
+    t.integer  "capacity"
+    t.boolean  "booked"
+    t.boolean  "adjourned"
+    t.integer  "lesson_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "meetings", ["lesson_id"], :name => "index_meetings_on_lesson_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -57,6 +99,12 @@ ActiveRecord::Schema.define(:version => 20130612040733) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.text     "image"
+    t.text     "description"
+    t.string   "time_zone"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
