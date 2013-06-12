@@ -7,7 +7,7 @@
           .form-ribbon.first-ribbon Basic Information
           = f.input :first_name, required: true, autofocus: true
           = f.input :email, required: true
-          = f.input :password, required: true
+          = f.input :password, "Password (8 character min.)" required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
           = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
           .form-ribbon Membership Details
