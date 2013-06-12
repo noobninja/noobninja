@@ -1,0 +1,21 @@
+.row
+  .small-12.large-6.columns.small-centered.large-centered
+    .section.top
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        = f.error_notification
+        .form-inputs
+          .form-ribbon.first-ribbon Basic Information
+          = f.input :email, :required => true, :autofocus => true
+          = f.input :password, :required => true
+          .form-ribbon Membership Details
+          .membership-details
+            | We understand that many of the best developers and designers out there prefer to offer free help, rather than collect a small fee for their time.
+            BR
+            | Any member can offer free lessons (we don't take a percentage) - and teachers have the option of keeping, returning, or donating any tips earned.
+            BR
+            ' We stay afloat by asking those members
+            strong seeking help&nbsp;
+            | for a per-request ($20), monthly ($15/month), or yearly ($8/month) membership fee.
+        .form-actions
+          = f.button :submit, "REQUEST MEMBERSHIP", class: "large radius button expand"
+      = render "devise/shared/links"

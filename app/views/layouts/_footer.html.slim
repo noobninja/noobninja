@@ -1,0 +1,10 @@
+footer
+  .row
+    .small-12.large-12.columns
+      .footer
+        - mail_content = capture do
+          i.icon-envelope
+        = mail_to "sensei@noobninja.com", mail_content, encode: "hex", target: "_blank"
+        = link_to "https://twitter.com/noobninjas", target: "_blank" do
+          i.icon-twitter
+        div NoobNinja © 2013

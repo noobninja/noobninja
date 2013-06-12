@@ -1,0 +1,18 @@
+.contain-to-grid
+  nav.top-bar
+    ul.title-area
+      li.name
+        h1= link_to root_path do
+          | noob
+          span ninja
+      li.toggle-topbar.menu-icon
+        = link_to '#' do
+          span
+    section.top-bar-section
+      ul.right
+        - if user_signed_in?
+          li= link_to 'Edit Profile', edit_user_registration_path
+          li.divider
+          li= link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          li= link_to 'ログイン Member Login', new_user_session_path

@@ -1,0 +1,77 @@
+.row
+  .small-12.large-12.columns
+    .section.top
+      .pitch
+        h1
+          span Get helped
+          | &nbsp;out via Hangouts.
+        p Get and give 10-minute lessons on specific programming and design tasks via video chat.
+        .pitch-buttons
+          = link_to new_user_registration_path, class: 'large radius button' do
+            | REQUEST MEMBERSHIP
+      .welcome-boxes
+        .welcome-box
+          span.icon-stack.icon-4x
+            i.icon-circle.icon-stack-base
+            i.icon-code.icon-light
+          p Request or offer a 10-minute lesson on any coding or design topic
+        .welcome-box
+          span.icon-stack.icon-4x
+            i.icon-circle.icon-stack-base
+            i.icon-money.icon-light
+          p Optionally, attach a small tip of up to $20 to your request or offer
+        .welcome-box
+          span.icon-stack.icon-4x
+            i.icon-circle.icon-stack-base
+            i.icon-heart-empty.icon-light
+          p Keep what you raise or donate it to the charity of the month
+    .welcome-title
+      .welcome-ribbon
+        | Example Lessons
+    .section
+      / EXAMPLE LESSON #1
+      .lesson.group.offer
+        .lesson-image= link_to image_tag("http://graph.facebook.com/301444/picture?type=normal"), new_user_registration_path
+        .lesson-amount
+          span $
+          | 10
+        .lesson-content
+          .lesson-title
+            = link_to "Milton", new_user_registration_path
+            span is teaching
+            .lesson-name= link_to "How to create a sticker effect in Photoshop", new_user_registration_path
+          .lesson-meetings
+            - 3.times do |i|
+              .lesson-meeting
+                = link_to new_user_registration_path do
+                  i.icon-time
+                  - start_time = DateTime.now.change(min: 0) + i.days + rand(1..12).hours
+                  = start_time.strftime("%B %-d")
+                  span |
+                  = start_time.strftime("%-l:%M %p")
+      / EXAMPLE LESSON #2
+      .lesson.group
+        .lesson-image= link_to image_tag("http://graph.facebook.com/300863/picture?type=normal"), new_user_registration_path
+        .lesson-amount
+          span $
+          | 20
+        .lesson-content
+          .lesson-title
+            = link_to "Meagan", new_user_registration_path
+            span wants to learn
+            .lesson-name= link_to "The initial setup and structure of a Rails app using Backbone.js", new_user_registration_path
+          .lesson-meetings
+            - 3.times do |i|
+              .lesson-meeting
+                = link_to new_user_registration_path do
+                  i.icon-time
+                  - start_time = DateTime.now.change(min: 0) + i.days + rand(1..12).hours
+                  = start_time.strftime("%B %-d")
+                  span |
+                  = start_time.strftime("%-l:%M %p")
+    / .welcome-title
+    /   .welcome-ribbon
+    /     | Our Story
+    / .section
+    /   | Story
+    = render 'layouts/footer'

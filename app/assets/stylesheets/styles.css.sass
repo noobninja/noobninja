@@ -1,0 +1,517 @@
+// PALETTE
+$BIEGE: #E0DED1
+$BLACK: #3B3B3B
+$BLUE: #007AA6//#1674C7
+$GREEN: #009986
+$GREY: #706C75
+
+// MIXINS
+@mixin button($color)
+  background: $color url(image_path('textures/waves.png'))
+  box-shadow: 0 5px 0 0 darken($color, 10%)
+  i
+    margin-right: 6px
+  &:hover
+    box-shadow: 0 5px 0 0 darken($color, 12%)
+
+// GLOBAL
+.group:after
+  content: ""
+  display: table
+  clear: both
+
+.section
+  background: #FBFBFB
+  border: 1px solid #C5C1B4
+  border-radius: 4px
+  margin-bottom: emCalc(20px)
+
+.section.top
+  border-top: 0
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.button
+  @include button($primary-color)
+
+.button.secondary
+  @include button($secondary-color)
+
+ul, ol
+  margin: 0
+
+// FORMS
+form
+  margin: 0
+
+form label
+  text-transform: capitalize
+
+.error small, small.error
+  background: $GREEN
+  border-radius: 0 0 2px 2px
+  font-weight: 500
+  padding-left: emCalc(8px)
+
+.shared-links
+  a
+    display: block
+    padding-top: emCalc(5px)
+    &:hover
+      color: $GREEN
+
+form.custom .custom.dropdown
+  font-weight: 500
+
+// NAVIGATION
+.contain-to-grid
+  background: $BLACK url(image_path('textures/navy.png'))
+  border-bottom: 1px solid #000
+  border-bottom-color: rgba(0, 0, 0, 0.8)
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5) inset, 0 -1px 0 rgba(0, 0, 0, 0.2) inset, 0px 1px 1px rgba(0,0,0,0.2)
+
+.contain-to-grid .top-bar, .top-bar-section ul, .top-bar-section li a:not(.button)
+  background: transparent
+
+.top-bar .name h1
+  font-size: emCalc(44px)
+  a
+    color: #FBFBFB
+    font-family: "estilo-regular"
+    font-weight: 100
+    span
+      color: #888
+
+.top-bar-section li a:not(.button)
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 1)
+  span
+    font-weight: 100
+    margin-right: 6px
+  &:hover
+    color: #AAA
+
+.top-bar-section ul li.active > a
+  background: rgba(255,255,255,0.05)
+  color: #FBFBFB
+  font-weight: 600
+  position: relative
+  &:after
+    bottom: -1px
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+    border-bottom-color: #FBFBFB //#dddace
+    border-width: 6px
+    left: 50%
+    margin-left: -6px
+
+.top-bar-section > ul > .divider
+  height: 16px
+  margin-top: 15px
+
+// FOOTER
+footer
+  margin: emCalc(40px) 0 emCalc(50px)
+
+.footer
+  color: #A49A90
+  font-weight: 500
+  text-align: center
+  a
+    color: #A49A90
+    font-size: emCalc(28px)
+    &:first-child
+      margin-right: emCalc(12px)
+    &:hover
+      color: $GREEN
+      i.icon-twitter
+        color: $BLUE
+  div
+    margin-top: emCalc(12px)
+
+// PITCH
+.pitch
+  padding: emCalc(40px) 0
+  text-align: center
+  h1
+    margin-bottom: emCalc(3px)
+  p
+    color: #706C75
+
+  .pitch-buttons
+    background: url('textures/waves.png')
+    margin-top: emCalc(40px)
+    padding: 0 0 emCalc(5px)
+    a
+      margin: 0 emCalc(10px)
+
+// WELCOME
+.welcome-title
+  text-align: center
+
+.welcome-ribbon
+  background: #A1785C
+  border-bottom: 2px solid darken(#A1785C, 10%)
+  color: $BIEGE
+  font-weight: 600
+  display: inline-block
+  margin-bottom: emCalc(20px)
+  min-width: 204px
+  padding: emCalc(10px) emCalc(40px)
+  position: relative
+  &:before
+    bottom: -1px
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+    border-left-color: $BIEGE
+    border-width: 18px
+    left: 0
+  &:after
+    bottom: -1px
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+    border-right-color: $BIEGE
+    border-width: 18px
+    right: 0
+
+.welcome-boxes
+  background: #F6F5EF
+  border: 2px solid #DDDACE
+  border-radius: 4px
+  margin: 0 emCalc(40px) emCalc(40px)
+
+.welcome-box
+  display: inline-block
+  text-align: center
+  padding: emCalc(20px)
+  width: 33.33%
+  i.icon-circle
+    color: $GREY//#E0DED1//#706C75
+  p
+    color: $GREY
+    font-weight: 600
+
+// NEW USER
+#new_user, #edit_user
+  padding: emCalc(25px) emCalc(40px) emCalc(40px)
+
+.form-ribbon
+  background: #EEE //url('textures/waves.png')
+  border-radius: 100px 400px 400px 0
+  box-shadow: 0 2px 0 0 darken(#EEE, 10%)
+  color: $GREY
+  display: inline-block
+  font-size: emCalc(14px)
+  font-weight: 600
+  margin: emCalc(25px) 0
+  padding: 5px 22px 3px 45px
+  position: relative
+  right: 45px
+  &:after
+    bottom: -1px
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+    border-top-color: darken(#EEE, 10%) //#dddace
+    border-width: 6px
+    left: 0
+    top: 24px
+    z-index: -10
+
+.form-ribbon.first-ribbon
+  margin-top: 0
+
+#new_user .membership-details
+  color: #555
+  line-height: emCalc(20px)
+  font-weight: 400
+  margin-bottom: emCalc(30px)
+
+#user_description
+  min-height: 90px
+
+// SPLASH
+.splash
+  // padding: emCalc(40px) 0 emCalc(60px)
+  border-radius: 0 0 0 3px
+  margin: 0 0 1px 1px
+  position: relative
+  text-align: center
+  h1
+    padding-top: emCalc(20px)
+  img
+    margin: emCalc(15px) 0
+  p
+    color: $GREEN
+    font-size: emCalc(22px)
+    display: block
+    padding-bottom: emCalc(60px)
+
+.splash-left
+  background: #FFF url('textures/waves.png')
+  border-right: 1px solid #EAEAEA
+  height: 100%
+  left: 0
+  position: absolute
+  width: emCalc(100px)
+
+.splash-right
+  background: #FFF url('textures/waves.png')
+  border-left: 1px solid #EAEAEA
+  height: 100%
+  right: 0
+  position: absolute
+  width: emCalc(100px)
+
+// LESSONS
+.lessons-bar
+  background: #FFF//#f6f5ef//whiteSmoke
+  border-bottom: 1px solid #FFF
+  border-radius: 3px 3px 0 0
+  margin: 1px 1px 0
+  padding-left: emCalc(124px)
+  ul
+    list-style: none
+    li
+      display: inline-block
+      a
+        color: $GREY
+        display: block
+        font-weight: 600
+        padding: emCalc(10px) emCalc(20px)
+        position: relative
+    li.active
+      background: $GREEN
+      border-left: 2px solid darken($GREEN, 10%)
+      border-right: 2px solid darken($GREEN, 10%)
+      // box-shadow: 0 5px 0 0 darken($GREEN, 12%)
+      a
+        color: #FFF
+        &:after
+          bottom: -2px
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+          border-bottom-color: #E0DED1//#FFF
+          border-width: 8px
+          left: 50%
+          margin-left: -8px
+          // z-index: 10
+
+// LESSON
+$lesson-image-size: emCalc(64px)
+$lesson-padding-top: emCalc(25px)
+
+.lesson
+  border-top: 1px dotted #DDD
+  min-height: $lesson-image-size + ($lesson-padding-top * 2)
+  padding-left: emCalc(40px)
+  position: relative
+
+.lesson-image
+  background: url('textures/waves.png')
+  padding: $lesson-padding-top 0
+  position: absolute
+  top: 1px
+  bottom: 1px
+  a
+    img
+      border-top: 1px solid #FFF
+      border-bottom: 1px solid #FFF
+      border-radius: 4px
+      height: $lesson-image-size
+      width: $lesson-image-size
+
+.lesson-amount
+  background: $BLUE //url('textures/waves.png')
+  border-radius: 400px 100px 0 400px
+  box-shadow: 0 2px 0 0 darken($BLUE, 8%)
+  color: #F1F3DD
+  float: right
+  font-size: emCalc(14px)
+  font-weight: 600
+  margin-top: $lesson-padding-top + emCalc(2px)
+  padding: 5px 22px 3px
+  position: relative
+  left: 7px
+  span
+    font-weight: 300
+    margin-right: 4px
+  &:after
+    bottom: -1px
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+    border-top-color: darken($BLUE, 10%) //#dddace
+    border-width: 6px
+    right: 0
+    top: 24px
+    z-index: -10
+
+.lesson-content
+  padding: $lesson-padding-top 0
+  margin-left: $lesson-image-size + emCalc(20px)
+  margin-right: emCalc(70px) + emCalc(5px)
+
+.lesson-title
+  line-height: emCalc(20px)
+  a
+    color: #007AA6
+    font-weight: 600
+    &:hover
+      color: darken(#007AA6, 5%)
+  span
+    color: $GREY
+    font-weight: 400
+    margin: 0 6px
+
+.lesson-name
+  display: inline
+
+.lesson-meetings
+  position: relative
+  right: 5px
+
+.lesson-meeting
+  display: inline-block
+  a
+    background: #FFFDF6
+    border: 1px solid #CCC
+    border-radius: 400px
+    box-shadow: 0 2px 0 0 darken(#CCC, 10%)
+    color: #808080
+    display: block
+    font-size: emCalc(14px)
+    font-weight: 600
+    margin-top: emCalc(12.5px)
+    margin-right: emCalc(12.5px)
+    padding: 6px 15px 6px 13px
+    i
+      margin-right: 8px
+    span
+      margin: 0 10px
+    &:hover
+      background: #007AA6
+      border: 1px solid #007AA6
+      box-shadow: 0 2px 0 0 darken(#007AA6, 15%)
+      color: #F1F3DD
+
+.lesson-meeting.booked
+  cursor: default
+  pointer-events: none
+  a
+    background: #CCC
+    &:hover
+      background: #CCC
+      border: 1px solid #CCC
+      box-shadow: 0 2px 0 0 darken(#CCC, 10%)
+      color: #808080
+
+.lesson.offer > .lesson-amount
+  background: $GREEN
+  box-shadow: 0 2px 0 0 darken($GREEN, 8%)
+  &:after
+    border-top-color: darken($GREEN, 10%) //#dddace
+
+.lesson.offer > .lesson-content > .lesson-title
+  a
+    color: $GREEN
+
+.lesson.offer > .lesson-content > .lesson-meetings > .lesson-meeting
+  a
+    &:hover
+      background: $GREEN
+      border: 1px solid $GREEN
+      box-shadow: 0 2px 0 0 darken($GREEN, 10%)
+      color: #F1F3DD
+
+// RESPONSIVE
+// We use this media query to add styles to any device that supports media queries
+@media only screen
+
+// Used to alter styles for screens less than 768px wide. This is where the grid changes.
+@media only screen and (max-width: 768px)
+  // NAVIGATION
+  .top-bar-section > ul > .divider
+    height: 1px
+    margin: 0
+
+  // WELCOME
+  .welcome-boxes
+    margin: 0 emCalc(20px) emCalc(20px)
+
+  .welcome-box
+    display: block
+    width: 100%
+
+  // LESSON
+  $lesson-image-size-responsive: emCalc(40px)
+  $lesson-padding-top-responsive: emCalc(25px)
+
+  .lesson
+    min-height: $lesson-image-size-responsive + ($lesson-padding-top-responsive * 2)
+    padding-left: emCalc(20px)
+
+  .lesson-image
+    padding: $lesson-padding-top-responsive 0
+    a
+      img
+        height: $lesson-image-size-responsive
+        width: $lesson-image-size-responsive
+
+  .lesson-amount
+    padding: 5px 11px 3px
+
+  .lesson-content
+    padding: $lesson-padding-top-responsive 0
+    margin-left: $lesson-image-size-responsive + emCalc(20px)
+    margin-right: emCalc(50px)
+
+  .lesson-name
+    display: block
+
+  .lesson-meeting
+    display: block
+    text-align: center
+    a
+      i
+        float: left
+
+// Used to alter styles for screens at least 768px wide. This is where the grid changes.
+@media only screen and (min-width: 768px)
+
+// Used to alter styles for screens at least 1280px wide.
+@media only screen and (min-width: 1280px)
+
+// Used to alter styles for screens at least 1440px wide.
+@media only screen and (min-width: 1440px)
+
+// Apply styles to screens in landscape orientation
+@media only screen and (orientation: landscape)
+
+// Apply styles to screens in portrait orientation
+@media only screen and (orientation: portrait)
+
+// We also use Modernizr to add a .touch class to the body when applicable
+// You can prepend this class to anything and it will style only for touch devices
+.touch .your-element

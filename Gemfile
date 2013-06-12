@@ -10,4 +10,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.3.0' # NOTE: ActiveAdmin
+gem 'slim-rails'
+gem 'bourbon'
+gem 'quiet_assets'
+gem 'ffaker'
+gem 'figaro'
+gem 'devise'
+gem 'activeadmin'
+gem 'simple_form'
+gem 'zurb-foundation'
+gem 'font-awesome-rails'
