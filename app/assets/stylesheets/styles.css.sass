@@ -56,9 +56,8 @@ form label
 
 .error small, small.error
   background: $GREEN
-  border-radius: 0 0 2px 2px
   font-weight: 500
-  padding-left: emCalc(8px)
+  padding: emCalc(5px) emCalc(8px) emCalc(7px)
 
 .form-actions
   margin-top: emCalc(25px)
@@ -263,14 +262,30 @@ footer
   position: relative
   text-align: center
   h1
-    padding-top: emCalc(20px)
+    padding-top: emCalc(15px)
   img
     margin: emCalc(15px) 0
-  p
+  h4
     color: $GREEN
-    font-size: emCalc(22px)
-    display: block
-    padding-bottom: emCalc(60px)
+    padding: 0 emCalc(60px)
+  p
+    background: #F6F5EF
+    border: 2px solid #DDDACE
+    border-radius: 4px
+    color: $GREY
+    font-weight: 600
+    margin: 0 auto
+    padding: emCalc(20px)
+    width: 60%
+
+  // p
+  //   color: $GREEN
+  //   font-size: emCalc(22px)
+  //   display: block
+  //   padding-bottom: emCalc(60px)
+  //   span
+  //     display: block
+  //     font-size: emCalc(12px)
 
 .splash-left
   background: #FFF url('textures/waves.png')
@@ -278,7 +293,7 @@ footer
   height: 100%
   left: 0
   position: absolute
-  width: emCalc(100px)
+  width: 11%
 
 .splash-right
   background: #FFF url('textures/waves.png')
@@ -286,7 +301,7 @@ footer
   height: 100%
   right: 0
   position: absolute
-  width: emCalc(100px)
+  width: 11%
 
 // LESSONS
 .lessons-bar

@@ -1,6 +1,29 @@
 .row
   .small-12.large-12.columns
-    .section.top
+    - if user_signed_in?
+      .section.top
+        .splash
+          .splash-left
+          .splash-right
+          h1 Thanks, #{current_user.first_name}!
+          = image_tag "ninja.png", width: 140
+          h4
+            | We've recieved your request for membership.
+          BR
+          p
+            | To ensure a quality experience, we will begin sending
+            br
+            | out invitations once 500 requests have been recieved.
+            BR
+            | Requests Recieved: #{User.all.length}
+          BR
+          a href="https://twitter.com/share" class="twitter-share-button" data-url="http://noobninja.com/" data-text="NoobNinja - get and give 10-minute lessons on specific coding and design tasks" data-via="noobninjas" data-size="large" data-related="noobninjas"
+            | Tweet
+          javascript:
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+          BR
+          BR
+    .section class=('top' unless user_signed_in?)
       .pitch
         h1
           span Get helped
@@ -14,7 +37,7 @@
           span.icon-stack.icon-4x
             i.icon-circle.icon-stack-base
             i.icon-code.icon-light
-          p Request or offer a 10-minute lesson on any coding or design topic
+          p Request or offer 10-minute lessons on any coding or design topic
         .welcome-box
           span.icon-stack.icon-4x
             i.icon-circle.icon-stack-base
