@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_taggable
+  mount_uploader :image, ImageUploader
 
   has_many :lessons
   has_many :offers
@@ -11,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :username, :description, :image, :tag_list, :time_zone
+                  :first_name, :last_name, :username, :description, :image, :image_cache, :tag_list, :time_zone, :member
 
   validates :first_name, presence: true
   validates :description, presence: true

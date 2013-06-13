@@ -2,13 +2,17 @@
 Version: 3.4.0 Timestamp: Tue May 14 08:27:33 PDT 2013
 */
 .select2-container {
-    margin: 0 0 1em;
+    margin: 0;
     position: relative;
     display: inline-block;
     /* inline-block for ie7 */
     zoom: 1;
     *display: inline;
     vertical-align: middle;
+}
+
+form .select2-container {
+    margin: 0 0 1em;
 }
 
 .select2-container,
@@ -377,7 +381,7 @@ Version: 3.4.0 Timestamp: Tue May 14 08:27:33 PDT 2013
               user-select: none;
 }
 
-.select2-results .select2-highlighted {
+.select2-results .select2-highlighted, .select2-results li:hover {
     background: #3875d7;
     color: #fff;
 }

@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20130612145245) do
     t.datetime "start_time"
     t.integer  "duration"
     t.integer  "capacity"
-    t.boolean  "booked"
-    t.boolean  "adjourned"
+    t.boolean  "booked",     :default => false
+    t.boolean  "adjourned",  :default => false
     t.integer  "lesson_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "meetings", ["lesson_id"], :name => "index_meetings_on_lesson_id"
@@ -86,11 +86,12 @@ ActiveRecord::Schema.define(:version => 20130612145245) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+    t.string "slug"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -105,8 +106,9 @@ ActiveRecord::Schema.define(:version => 20130612145245) do
     t.text     "image"
     t.text     "description"
     t.string   "time_zone"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.boolean  "member",                 :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

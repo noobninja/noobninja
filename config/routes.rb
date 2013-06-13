@@ -1,9 +1,13 @@
 Noobninja::Application.routes.draw do
-  root :to => 'users#welcome'
+  root to: 'users#welcome'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users
+  resources :lessons
+  resources :requests
+  resources :offers
+  resources :meetings
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

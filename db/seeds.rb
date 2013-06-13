@@ -9,7 +9,6 @@ puts "CREATE USERS"
     last_name: Faker::Name.last_name,
     username: Faker::Lorem.words(2).join,
     description: Faker::Lorem.paragraph,
-    image: "http://graph.facebook.com/#{rand(300000..302715)}/picture?type=normal",
     tag_list: tags.sample(rand(1..5)).join(", "),
     time_zone: "Eastern Time (US & Canada)"
   )

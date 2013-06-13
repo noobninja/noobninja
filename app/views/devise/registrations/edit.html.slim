@@ -5,6 +5,9 @@
         / = f.error_notification
         .form-ribbon.first-ribbon Basic Information
         .form-inputs
+          = image_tag(current_user.image_url(:thumb), class: "image_preview") if @user.image?
+          = f.input :image, as: :file, label: "Avatar"
+          = f.input :image_cache, as: :hidden
           = f.input :first_name, required: true, autofocus: true
           = f.input :last_name, required: false
           = f.input :email, required: true
