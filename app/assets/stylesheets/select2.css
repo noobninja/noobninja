@@ -34,20 +34,20 @@ form .select2-container {
 
 .select2-container .select2-choice {
     display: block;
-    height: 32px;
+    height: 34px;
     padding: 3px 0 0 8px;
     overflow: hidden;
     position: relative;
 
-    border: 1px solid #aaa;
+    border: 1px solid #CCC;
     white-space: nowrap;
     line-height: 26px;
     color: #444;
     text-decoration: none;
 
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
 
     -webkit-background-clip: padding-box;
        -moz-background-clip: padding;
@@ -61,13 +61,13 @@ form .select2-container {
               user-select: none;
 
     background-color: #fff;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(0.5, white));
+/*    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(0.5, white));
     background-image: -webkit-linear-gradient(center bottom, #eeeeee 0%, white 50%);
     background-image: -moz-linear-gradient(center bottom, #eeeeee 0%, white 50%);
     background-image: -o-linear-gradient(bottom, #eeeeee 0%, #ffffff 50%);
     background-image: -ms-linear-gradient(top, #ffffff 0%, #eeeeee 50%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#eeeeee', GradientType = 0);
-    background-image: linear-gradient(top, #ffffff 0%, #eeeeee 50%);
+    background-image: linear-gradient(top, #ffffff 0%, #eeeeee 50%);*/
 
     font-size: emCalc(14px);
     font-weight: 600;
@@ -107,8 +107,8 @@ form .select2-container {
 
 .select2-container .select2-choice abbr {
     display: none;
-    width: 12px;
-    height: 12px;
+    width: 20px;
+    height: 20px;
     position: absolute;
     right: 24px;
     top: 8px;
@@ -127,7 +127,7 @@ form .select2-container {
 }
 
 .select2-container .select2-choice abbr:hover {
-    background-position: right -11px;
+    background-position: right -16px;
     cursor: pointer;
 }
 
@@ -184,13 +184,13 @@ form .select2-container {
 
 .select2-container .select2-choice div {
     display: inline-block;
-    width: 18px;
+    width: 24px;
     height: 100%;
     position: absolute;
     right: 0;
     top: 0;
 
-    border-left: 1px solid #aaa;
+    border-left: 1px solid #BBB;
     -webkit-border-radius: 0 4px 4px 0;
        -moz-border-radius: 0 4px 4px 0;
             border-radius: 0 4px 4px 0;
@@ -199,14 +199,14 @@ form .select2-container {
        -moz-background-clip: padding;
             background-clip: padding-box;
 
-    background: #ccc;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
+    background: #EEE; /*#ccc;*/
+/*    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
     background-image: -webkit-linear-gradient(center bottom, #ccc 0%, #eee 60%);
     background-image: -moz-linear-gradient(center bottom, #ccc 0%, #eee 60%);
     background-image: -o-linear-gradient(bottom, #ccc 0%, #eee 60%);
     background-image: -ms-linear-gradient(top, #cccccc 0%, #eeeeee 60%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#eeeeee', endColorstr = '#cccccc', GradientType = 0);
-    background-image: linear-gradient(top, #cccccc 0%, #eeeeee 60%);
+    background-image: linear-gradient(top, #cccccc 0%, #eeeeee 60%);*/
 }
 
 .select2-container .select2-choice div b {
@@ -250,7 +250,7 @@ form .select2-container {
        -moz-box-shadow: none;
             box-shadow: none;
 
-    background: #fff url('select2.png') no-repeat 100% -22px;
+    background: #fff url('select2.png') no-repeat 100% -29px;
     background: url('select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, white), color-stop(0.99, #eeeeee));
     background: url('select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, white 85%, #eeeeee 99%);
     background: url('select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, white 85%, #eeeeee 99%);

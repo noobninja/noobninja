@@ -47,6 +47,11 @@ form
 form label
   text-transform: capitalize
 
+.alert-box
+  border: 1px solid #FFF
+  font-weight: 600
+  margin-bottom: 0
+
 .error label, label.error
   color: $GREEN
 
@@ -113,7 +118,7 @@ form.custom .custom.dropdown
     width: 0
     position: absolute
     pointer-events: none
-    border-bottom-color: #FBFBFB //#dddace
+    border-bottom-color: #FBFBFB
     border-width: 6px
     left: 50%
     margin-left: -6px
@@ -207,7 +212,7 @@ footer
   padding: emCalc(20px)
   width: 33.33%
   i.icon-circle
-    color: $GREY//#E0DED1//#706C75
+    color: $GREY
   p
     color: $GREY
     font-weight: 600
@@ -217,7 +222,7 @@ footer
   padding: emCalc(25px) emCalc(40px) emCalc(40px)
 
 .form-ribbon
-  background: #EEE //url('textures/waves.png')
+  background: #EEE
   border-radius: 100px 400px 400px 0
   box-shadow: 0 2px 0 0 darken(#EEE, 10%)
   color: $GREY
@@ -236,7 +241,7 @@ footer
     width: 0
     position: absolute
     pointer-events: none
-    border-top-color: darken(#EEE, 10%) //#dddace
+    border-top-color: darken(#EEE, 10%)
     border-width: 6px
     left: 0
     top: 24px
@@ -264,7 +269,6 @@ footer
 
 // SPLASH
 .splash
-  // padding: emCalc(40px) 0 emCalc(60px)
   border-radius: 0 0 0 3px
   margin: 0 0 1px 1px
   position: relative
@@ -286,15 +290,6 @@ footer
     padding: emCalc(20px)
     width: 60%
 
-  // p
-  //   color: $GREEN
-  //   font-size: emCalc(22px)
-  //   display: block
-  //   padding-bottom: emCalc(60px)
-  //   span
-  //     display: block
-  //     font-size: emCalc(12px)
-
 .splash-left
   background: #FFF url('textures/waves.png')
   border-right: 1px solid #EAEAEA
@@ -312,28 +307,28 @@ footer
   width: 11%
 
 // LESSONS
+.section.lessons-index
+  padding: 0 2px 2px
+
 .lessons-bar
-  background: url('textures/waves.png')
+  background: whiteSmoke url('textures/waves.png')
+  border-radius: 0 0 2px 2px
   ul
-    // display: inline-block
-    border: 3px solid #FFF
-    border-top: 0
-    border-radius: 3px
     list-style: none
-    padding: emCalc(7px)
+    padding: emCalc(7px) emCalc(7px) emCalc(9px)
     li
       display: inline-block
       a
         background: #FFF
-        border: 1px solid #C5C1B4
+        border: 1px solid #BBB
         border-radius: 4px
-        box-shadow: 0 1px 0 0 darken(#C5C1B4, 10%)
+        box-shadow: 0 1px 0 0 darken(#BBB, 10%)
         color: $GREY
         display: block
         font-size: emCalc(15px)
         font-weight: 600
         margin-right: emCalc(10px)
-        padding: emCalc(3px) emCalc(30px)
+        padding: emCalc(4px) emCalc(30px) emCalc(3px)
     li.teach
       a
         &:hover
@@ -371,142 +366,9 @@ footer
       color: #B52B70
 
 .lessons-bar #s2id_lesson_tags
-  float: right
-  padding: emCalc(7px) emCalc(7px) 0 0
-  max-width: 200px
-// // LESSONS
-// .lessons-bar
-//   background: url('textures/waves.png')
-//   // padding: 2px
-//   ul
-//     list-style: none
-//     padding-left: emCalc(40px)
-//     li
-//       display: inline-block
-//       a
-//         background: #FFF
-//         border-right: 1px solid $BIEGE
-//         color: $GREY
-//         display: block
-//         font-size: emCalc(15px)
-//         font-weight: 400
-//         padding: emCalc(10px) emCalc(30px)
-//         position: relative
-//     li.learn
-//       a
-//         border-left: 1px solid $BIEGE
-//         // border-radius: 0 0 0 3px
-//         &:hover
-//           color: $BLUE
-//     li.teach
-//       a
-//         &:hover
-//           color: $BLUE
-//     li.active
-//       a
-//         color: #FFF
-//     li.learn.active
-//       a
-//         background: $BLUE
-//         color: #FFF
-//         border-color: #FFF
-//         box-shadow: inset 0 0 7px darken($BLUE, 15%)
-//         &:hover
-//           color: #FFF
-//         &:before
-//           bottom: 1px
-//           border: solid transparent
-//           content: " "
-//           height: 0
-//           width: 0
-//           position: absolute
-//           pointer-events: none
-//           border-bottom-color: darken($BLUE, 6%)
-//           border-width: 8px
-//           left: 50%
-//           margin-left: -8px
-//         &:after
-//           bottom: -1px
-//           border: solid transparent
-//           content: " "
-//           height: 0
-//           width: 0
-//           position: absolute
-//           pointer-events: none
-//           border-bottom-color: #E0DED1
-//           border-width: 8px
-//           left: 50%
-//           margin-left: -8px
-//     li.teach.active
-//       a
-//         background: $GREEN
-//         color: #FFF
-//         border-color: #FFF
-//         box-shadow: inset 0 0 7px darken($GREEN, 15%)
-//         &:hover
-//           color: #FFF
-//         &:before
-//           bottom: 1px
-//           border: solid transparent
-//           content: " "
-//           height: 0
-//           width: 0
-//           position: absolute
-//           pointer-events: none
-//           border-bottom-color: darken($GREEN, 6%)//#FFF
-//           border-width: 8px
-//           left: 50%
-//           margin-left: -8px
-//         &:after
-//           bottom: -1px
-//           border: solid transparent
-//           content: " "
-//           height: 0
-//           width: 0
-//           position: absolute
-//           pointer-events: none
-//           border-bottom-color: #E0DED1//#FFF
-//           border-width: 8px
-//           left: 50%
-//           margin-left: -8px
-
-// // LESSONS
-// .lessons-bar
-//   // background: #FFF//#f6f5ef//whiteSmoke
-//   // border-bottom: 1px solid #FFF
-//   // border-radius: 3px 3px 0 0
-//   // margin: 1px 1px 0
-//   // padding-left: emCalc(124px)
-//   ul
-//     list-style: none
-//     li
-//       display: inline-block
-//       a
-//         color: $GREY
-//         display: block
-//         font-weight: 600
-//         padding: emCalc(10px) emCalc(20px)
-//         position: relative
-//     li.active
-//       background: $GREEN
-//       border-left: 2px solid darken($GREEN, 10%)
-//       border-right: 2px solid darken($GREEN, 10%)
-//       // box-shadow: 0 5px 0 0 darken($GREEN, 12%)
-//       a
-//         color: #FFF
-//         &:after
-//           bottom: -2px
-//           border: solid transparent
-//           content: " "
-//           height: 0
-//           width: 0
-//           position: absolute
-//           pointer-events: none
-//           border-bottom-color: #E0DED1//#FFF
-//           border-width: 8px
-//           left: 50%
-//           margin-left: -8px
-//           // z-index: 10
+  // float: right
+  // padding: emCalc(8px) emCalc(7px) 0 0
+  // max-width: 200px
 
 // LESSON
 $lesson-image-size: emCalc(60px)
@@ -538,7 +400,7 @@ $lesson-padding-top: emCalc(25px)
       // width: $lesson-image-size
 
 .lesson-amount
-  background: $BLUE //url('textures/waves.png')
+  background: $BLUE
   border-radius: 400px 100px 0 400px
   box-shadow: 0 2px 0 0 darken($BLUE, 8%)
   color: #F1F3DD
@@ -560,7 +422,7 @@ $lesson-padding-top: emCalc(25px)
     width: 0
     position: absolute
     pointer-events: none
-    border-top-color: darken($BLUE, 10%) //#dddace
+    border-top-color: darken($BLUE, 10%)
     border-width: 6px
     right: 0
     top: 24px
@@ -618,7 +480,9 @@ $lesson-padding-top: emCalc(25px)
   cursor: default
   pointer-events: none
   a
-    background: #CCC
+    background: #DDD
+    border-color: #CCC
+    color: #999
     &:hover
       background: #CCC
       border: 1px solid #CCC
@@ -629,7 +493,7 @@ $lesson-padding-top: emCalc(25px)
   background: $GREEN
   box-shadow: 0 2px 0 0 darken($GREEN, 8%)
   &:after
-    border-top-color: darken($GREEN, 10%) //#dddace
+    border-top-color: darken($GREEN, 10%)
 
 .lesson.offer > .lesson-content > .lesson-title
   a

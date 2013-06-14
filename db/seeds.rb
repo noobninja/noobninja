@@ -1,6 +1,17 @@
 tags = %W[ c# java php javascript coffeescript android jquery c++ iphone asp.net python .net html mysql objective-c ios sql css ruby-on-rails c ruby django linux windows facebook osx wordpress ipad perl cocoa flash git r flex jquery node.js postgresql scala mongodb firefox google-chrome haskell vim sublime-text textmate photoshop illustrator web-design responsive-design mobile-design logo-design poster-design print-design typography illustration ]
 
 puts "CREATE USERS"
+User.create(
+  email: "abreu.jamil@gmail.com",
+  password: "11111111",
+  first_name: "Jamil",
+  last_name: "Abreu",
+  username: "noob",
+  description: Faker::Lorem.paragraph,
+  tag_list: ["ruby", "ruby-on-rails", "javascript", "css", "git"],
+  time_zone: "Eastern Time (US & Canada)",
+  member: true
+)
 20.times do
   User.create(
     email: Faker::Internet.email,
@@ -31,14 +42,14 @@ puts "CREATE LESSONS"
   )
   rand(1..3).times do
     offer.meetings.create(
-      start_time: DateTime.now + rand(5..60).minutes,
+      start_time: DateTime.now + rand(60..240).minutes,
       booked: rand(1..3).even? ? true : false
       # start_time: DateTime.now + rand(1..3).days + rand(1..12).hours + rand(1..60).minutes
     )
   end
   rand(1..3).times do
     request.meetings.create(
-      start_time: DateTime.now + rand(5..60).minutes,
+      start_time: DateTime.now + rand(60..240).minutes,
       booked: rand(1..3).even? ? true : false
       # start_time: DateTime.now + rand(1..3).days + rand(1..12).hours + rand(1..60).minutes
     )

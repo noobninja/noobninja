@@ -1,7 +1,7 @@
 .lesson.group class=("offer" if lesson.type == "Offer")
   .lesson-image
-    - if lesson.user.image_url != "/assets/fallback/default.png"
-      = link_to image_tag(lesson.user.image_url(:thumb)), lesson.user
+    / - if lesson.user.image_url != "/assets/fallback/default.png"
+    = link_to image_tag(lesson.user.image_url(:thumb)), lesson.user
   - if lesson.amount?
     .lesson-amount
       span $
@@ -19,7 +19,8 @@
             = meeting.start_time.strftime("%B %-d")
             span |
             = meeting.start_time.strftime("%-l:%M %p")
-      .lesson-meeting
-        = link_to lesson do
-          i.icon-time
-          | Request Session
+      - if lesson.type == "Offer" #&& (lesson.booked? || lesson.inactive?)
+        .lesson-meeting
+          = link_to lesson do
+            i.icon-time
+            | Request Session

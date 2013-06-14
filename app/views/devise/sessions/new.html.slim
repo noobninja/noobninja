@@ -1,11 +1,13 @@
 .row
   .small-12.large-6.columns.small-centered.large-centered
     .section.top
+      = render 'layouts/flash'
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        = f.error_notification
         .form-ribbon.first-ribbon Member Login
         .form-inputs
-          = f.input :email, :required => false, :autofocus => true
-          = f.input :password, :required => false
+          = f.input :email, required: true, autofocus: true
+          = f.input :password, required: true
         .form-actions
           = f.button :submit, "LOGIN", class: "large radius button expand"
           .shared-links= render "devise/shared/links"
