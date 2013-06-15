@@ -17,6 +17,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   # storage :file
   storage :fog
 
+  # Setup cache dir
+  if Rails.env.production? || Rails.env.staging?
+    def cache_dir
+      "#{Rails.root}/tmp/uploads"   # we're deploying on heroku, use /tmp for processing images
+    end
+  end
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
