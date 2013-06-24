@@ -1,0 +1,35 @@
+= simple_form_for @membership do |f|
+  .form-ribbon.first-ribbon Subscription Details
+  div id="stripe_error"
+    noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+  = f.input :stripe_card_token, as: :hidden
+  - if @membership.stripe_card_token.present?
+    | Credit card has been provided.
+  - elsif current_user.teacher?
+  - else
+    .row
+      .large-7.columns
+        = label_tag :card_number, "Credit Card Number"
+        = text_field_tag :card_number, nil, name: nil
+      .large-5.columns
+        = label_tag :card_code, "Security Code (CVV)"
+        = text_field_tag :card_code, nil, name: nil
+    .row
+      .large-12.columns
+        = label_tag :card_month, "Card Expiration"
+        .row
+          .large-6.columns
+            = select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}
+          .large-6.columns
+            = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}
+  - if params[:action] == "new"
+    = f.input :plan_id, label: false, collection: [["$0/month (Teacher)", 3], ["$20/month", 1], ["$10/month (billed yearly)", 2]], checked: 3, as: :radio_buttons
+  - else
+    = f.input :plan_id, label: false, collection: [["$20/month", 1], ["$10/month (billed yearly)", 2]], checked: 1, as: :radio_buttons
+  = f.button :submit, params[:action] == "new" ? "VERIFY ACCOUNT" : "START SUBSCRIPTION", class: "large radius button expand"
+  .membership_footer
+    - if params[:action] == "new"
+      span Your card won't be charged upon submission of this form.
+    - else
+      span Your card will be charged $20 upon submission of this form.
+    = image_tag("stripe/outline.png")

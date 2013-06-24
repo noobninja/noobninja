@@ -4,6 +4,7 @@ $BLACK: #3B3B3B
 $BLUE: #007AA6//#1674C7
 $GREEN: #009986
 $GREY: #706C75
+$PURPLE: #B52B70
 
 // MIXINS
 @mixin button($color)
@@ -51,6 +52,7 @@ form label
   border: 1px solid #FFF
   font-weight: 600
   margin-bottom: 0
+  text-align: center
 
 .error label, label.error
   color: $GREEN
@@ -267,6 +269,108 @@ footer
 #user_description
   min-height: 90px
 
+// NEW LESSON
+#new_lesson
+  padding: emCalc(40px)
+
+#new_lesson a:first-child
+  margin-bottom: emCalc(30px)
+
+// NEW REQUEST
+#new_request, #new_offer
+  padding: emCalc(25px) emCalc(40px) emCalc(40px)
+
+#new_request .add_fields, #new_offer .add_fields
+  display: inline-block
+  margin-bottom: 1em
+  i
+    margin-right: 6px
+
+#new_request .remove_fields, #new_offer .remove_fields
+  color: $GREY
+  display: inline-block
+  float: right
+  margin-bottom: 1em
+  i
+    margin-right: 6px
+
+#new_request .request_amount, #new_offer .offer_amount
+  background: whiteSmoke
+  border: 1px solid #EEE
+  border-radius: 4px
+  margin-bottom: emCalc(20px)
+  padding: emCalc(15px) 0 emCalc(5px) 0
+  text-align: center
+  label:not(.control-label)
+    display: inline-block
+    margin-top: 5px
+    margin-right: emCalc(25px)
+    &:last-child
+      margin-right: 0
+    input
+      margin-right: emCalc(8px)
+
+.provide-details
+  background: whiteSmoke
+  border: 1px solid #EEE
+  border-radius: 4px
+  color: $GREY
+  font-weight: 500
+  margin-bottom: emCalc(20px)
+  padding: emCalc(15px)
+  text-align: center
+
+// NEW MEMBERSHIP
+#new_membership, .edit_membership
+  padding: emCalc(25px) emCalc(40px) emCalc(25px)
+
+// #new_membership .membership_plan_id
+//   background: whiteSmoke
+//   border: 1px solid #EEE
+//   border-radius: 4px
+//   margin: 1em 0 2em
+//   padding: emCalc(15px) 0 emCalc(5px) 0
+//   text-align: center
+//   label:not(.control-label)
+//     display: inline-block
+//     text-transform: lowercase
+//     input
+//       margin-right: emCalc(8px)
+//     &:first-child
+//       margin-right: emCalc(25px)
+
+#new_membership .membership_plan_id, .edit_membership .membership_plan_id
+  margin-bottom: 1.5em
+  label.control-label
+    margin-top: 1em
+    margin-bottom: 0.5em
+  label:not(.control-label)
+    background: #F6F5EF
+    border: 2px solid #DDDACE
+    border-radius: 4px
+    margin-bottom: 0.5em
+    padding: emCalc(15px) 0 emCalc(5px) emCalc(15px)
+    input
+      margin-right: emCalc(10px)
+
+.membership_status
+  // padding: emCalc(25px) emCalc(40px) emCalc(40px)
+  // text-align: center
+  // img
+  //   margin: emCalc(10px) 0 emCalc(15px)
+  // div
+  //   color: $GREEN
+  //   font-weight: 500
+
+.membership_footer
+  color: #8d9ba2
+  font-size: emCalc(14px)
+  font-weight: 600
+  margin-top: emCalc(25px)
+  text-align: center
+  img
+    margin-top: emCalc(15px)
+
 // SPLASH
 .splash
   border-radius: 0 0 0 3px
@@ -329,6 +433,14 @@ footer
         font-weight: 600
         margin-right: emCalc(10px)
         padding: emCalc(4px) emCalc(30px) emCalc(3px)
+    li.create
+      a
+        i
+          margin-right: 8px
+        &:hover
+          color: $PURPLE
+          border-color: $PURPLE
+          box-shadow: 0 1px 0 0 darken($PURPLE, 10%)
     li.teach
       a
         &:hover
@@ -363,12 +475,7 @@ footer
     font-size: emCalc(14px)
     font-weight: 600
     &:hover
-      color: #B52B70
-
-.lessons-bar #s2id_lesson_tags
-  // float: right
-  // padding: emCalc(8px) emCalc(7px) 0 0
-  // max-width: 200px
+      color: $PURPLE
 
 // LESSON
 $lesson-image-size: emCalc(60px)
@@ -476,18 +583,12 @@ $lesson-padding-top: emCalc(25px)
       box-shadow: 0 2px 0 0 darken(#007AA6, 15%)
       color: #F1F3DD
 
-.lesson-meeting.booked
-  cursor: default
-  pointer-events: none
+.lesson-meeting.active
   a
-    background: #DDD
-    border-color: #CCC
-    color: #999
-    &:hover
-      background: #CCC
-      border: 1px solid #CCC
-      box-shadow: 0 2px 0 0 darken(#CCC, 10%)
-      color: #808080
+    background: #007AA6
+    border: 1px solid #007AA6
+    box-shadow: 0 2px 0 0 darken(#007AA6, 15%)
+    color: #F1F3DD
 
 .lesson.offer > .lesson-amount
   background: $GREEN
@@ -506,6 +607,42 @@ $lesson-padding-top: emCalc(25px)
       border: 1px solid $GREEN
       box-shadow: 0 2px 0 0 darken($GREEN, 10%)
       color: #F1F3DD
+
+.lesson.offer > .lesson-content > .lesson-meetings > .lesson-meeting.active
+  a
+    background: $GREEN
+    border: 1px solid $GREEN
+    box-shadow: 0 2px 0 0 darken($GREEN, 10%)
+    color: #F1F3DD
+
+.lesson-meeting.booked
+  cursor: default
+  pointer-events: none
+  a
+    background: #DDD
+    border-color: #CCC
+    color: #999
+    &:hover
+      background: #CCC
+      border: 1px solid #CCC
+      box-shadow: 0 2px 0 0 darken(#CCC, 10%)
+      color: #808080
+
+.lesson-meeting.booked.active
+  a
+    box-shadow: 0 2px 0 0 darken(#CCC, 10%)
+
+// SHOW MEETING
+.book-lesson
+  color: $GREY
+  font-size: emCalc(17px)
+  font-weight: 300
+  padding: emCalc(30px) emCalc(20px)
+  text-align: center
+  strong
+    color: #333
+  a
+    margin-top: emCalc(20px)
 
 // RESPONSIVE
 // We use this media query to add styles to any device that supports media queries

@@ -4,8 +4,7 @@ puts "CREATE USERS"
 User.create(
   email: "abreu.jamil@gmail.com",
   password: "11111111",
-  first_name: "Jamil",
-  last_name: "Abreu",
+  name: "Jamil Abreu",
   username: "noob",
   description: Faker::Lorem.paragraph,
   tag_list: ["ruby", "ruby-on-rails", "javascript", "css", "git"],
@@ -16,8 +15,7 @@ User.create(
   User.create(
     email: Faker::Internet.email,
     password: 'password',
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
     username: Faker::Lorem.words(2).join,
     description: Faker::Lorem.paragraph,
     tag_list: tags.sample(rand(1..5)).join(", "),
@@ -31,26 +29,26 @@ puts "CREATE LESSONS"
   offer = user.offers.create(
     name: Faker::Lorem.sentences(2).join(" "),
     description: Faker::Lorem.paragraph,
-    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 20 : 10,
+    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 2000 : 1000,
     tag_list: tags.sample(rand(1..5)).join(", ")
   )
   request = user.requests.create(
     name: Faker::Lorem.sentences(2).join(" "),
     description: Faker::Lorem.paragraph,
-    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 20 : 10,
+    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 2000 : 1000,
     tag_list: tags.sample(rand(1..5)).join(", ")
   )
   rand(1..3).times do
     offer.meetings.create(
-      start_time: DateTime.now + rand(60..240).minutes,
-      booked: rand(1..3).even? ? true : false
+      start_time: DateTime.now + rand(60..240).minutes
+      # booked: rand(1..3).even? ? true : false
       # start_time: DateTime.now + rand(1..3).days + rand(1..12).hours + rand(1..60).minutes
     )
   end
   rand(1..3).times do
     request.meetings.create(
-      start_time: DateTime.now + rand(60..240).minutes,
-      booked: rand(1..3).even? ? true : false
+      start_time: DateTime.now + rand(60..240).minutes
+      # booked: rand(1..3).even? ? true : false
       # start_time: DateTime.now + rand(1..3).days + rand(1..12).hours + rand(1..60).minutes
     )
   end

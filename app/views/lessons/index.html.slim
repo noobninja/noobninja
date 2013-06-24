@@ -3,14 +3,19 @@
 .row
   .small-12.large-12.columns
     .section.top.lessons-index
+      = render 'layouts/flash'
       .lessons-bar
         .row
           .large-9.columns
             ul
+              li.create
+                = link_to new_lesson_path do
+                  i.icon-plus
+                  | NEW
               li.learn class=("active" if params[:type] == "offer")
-                = link_to "LEARN", lessons_path(type: "offer", tag: params[:tag])
+                = link_to "LESSONS", params[:type] == "offer" ? lessons_path(tag: params[:tag]) : lessons_path(type: "offer", tag: params[:tag])
               li.teach class=("active" if params[:type] == "request")
-                = link_to "TEACH", lessons_path(type: "request", tag: params[:tag])
+                = link_to "REQUESTS", params[:type] == "request" ? lessons_path(tag: params[:tag]) : lessons_path(type: "request", tag: params[:tag])
               - if params[:type].present? || params[:tag].present?
                 .clear-filters= link_to "Clear Filters", lessons_path
           .large-3.columns
@@ -19,6 +24,5 @@
     .section
       = render partial: "lessons/lesson", collection: @lessons, as: :lesson
       - unless params[:type] == "request"
-        = render partial: "lessons/lesson", collection: @booked_lessons, as: :lesson
         = render partial: "lessons/lesson", collection: @inactive_lessons, as: :lesson
     = render 'layouts/footer'

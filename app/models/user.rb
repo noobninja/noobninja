@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :lessons
   has_many :offers
   has_many :requests
+  has_one :membership
+  has_many :meeting_users
+  has_many :users, through: :meeting_users
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,16 +15,28 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :username, :description, :image, :image_cache, :tag_list, :time_zone, :member
+                  :name, :first_name, :last_name, :username, :description, :image, :image_cache,
+                  :tag_list, :time_zone, :member
 
-  validates :first_name, presence: true
+  validates :name, presence: true
   validates :description, presence: true
   validates :description, presence: true
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone"
 
-  def first_name=(name)
-    string = name.split(' ', 2)
-    write_attribute :first_name, string.first
-    write_attribute :last_name, string.last if string.length > 1
+  def name=(string)
+    name = string.split(' ', 2)
+    write_attribute :name, string
+    write_attribute :first_name, name.first
+    write_attribute :last_name, name.last if string.length > 1
+  end
+
+  def member?
+    membership.present?
+  end
+  def student?
+    membership.present? && (membership.plan_id > 1)
+  end
+  def teacher?
+    membership.present? && membership.plan_id == 1
   end
 end

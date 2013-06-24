@@ -1,0 +1,67 @@
+.datetimepicker.input-append.date
+  .row.collapse
+    .large-10.small-10.columns
+      = f.text_field :start_time, value: (DateTime.now.beginning_of_hour + 1.hour).strftime("%m/%d/%Y %r"), "data-format" => "MM/dd/yyyy HH:mm:ss PP"
+    .large-2.small-2.columns
+      span.add-on.postfix
+        i data-time-icon="icon-time" data-date-icon="icon-calendar"
+  = f.hidden_field :_destroy
+  = link_to '#', class: "remove_fields" do
+    i.icon-remove
+    | Remove
+
+/ = f.input :start_time_string, as: :string, input_html: { value: "June 23 at 5PM" }
+
+/ fieldset
+/   #datetimepicker2.input-append.date
+/     = f.input :start_time, as: :string, input_html: { "data-format" => "dd/MM/yyyy hh:mm:ss" }
+/     span class="add-on"
+/       i data-time-icon="icon-time" data-date-icon="icon-calendar"
+/   = f.hidden_field :_destroy
+/   = link_to "remove", '#', class: "remove_fields"
+
+
+
+
+/ fieldset
+/   div id="datetimepicker1" class="input-append date"
+/     input data-format="dd/MM/yyyy hh:mm:ss" type="text"
+/     span class="add-on"
+/       i data-time-icon="icon-time" data-date-icon="icon-calendar"
+
+
+
+
+
+
+
+
+/ fieldset
+/   = f.input :start_time, :wrapper => :foundation
+/     .row
+/       .large-12.columns
+/         .row.collapse
+/           / = f.label :start_time
+/           .large-9.columns
+/             = f.text_field :start_time, id: "datetimepicker2", "data-format" => "dd/MM/yyyy hh:mm:ss"
+/           .large-3.columns
+/             span.postfix
+/               i class="icon-envelope"
+
+/ .row
+/   div class="large-12 columns"
+/     div class="row collapse"
+/       label Input Label
+/       div class="small-9 columns"
+/         input type="text" placeholder="small-9.columns"
+/       div class="small-3 columns"
+/         span class="postfix" .com
+
+/   <%= f.text_area :content %><br />
+/   <%= f.check_box :_destroy %>
+/   <%= f.label :_destroy, "Remove Question" %>
+/   <%= f.fields_for :answers do |builder| %>
+/     <%= render 'answer_fields', f: builder %>
+/   <% end %>
+/   <%= link_to_add_fields "Add Answer", f, :answers %>
+/ </fieldset>

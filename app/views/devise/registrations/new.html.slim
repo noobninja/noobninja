@@ -5,7 +5,7 @@
         / = f.error_notification
         .form-inputs
           .form-ribbon.first-ribbon Basic Information
-          = f.input :first_name, required: true, autofocus: true
+          = f.input :name, required: true, autofocus: true
           = f.input :email, required: true
           = f.input :password, required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"

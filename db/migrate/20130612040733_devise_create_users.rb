@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string :authentication_token
 
       # Custom
+      t.string  :name
       t.string  :first_name
       t.string  :last_name
       t.string  :username

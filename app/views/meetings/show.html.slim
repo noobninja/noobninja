@@ -1,0 +1,30 @@
+.row
+  .small-12.large-12.columns
+    .section.top
+      = render 'layouts/flash'
+      = render partial: "lessons/lesson", object: @lesson, as: :lesson
+    .section
+      - if @meeting.booked?
+        .book-lesson
+          ' You'll be meeting with #{@lesson.user.first_name} on
+          strong #{@meeting.start_time.strftime("%B %-d at %-l:%M %p")}&nbsp;
+          BR
+          ' Please be respectful and give advance warning if you will be unable to attend.
+      - else
+        .book-lesson
+          - if @lesson.type == "Request"
+            div
+              ' I can help #{@lesson.user.first_name} learn about the topic specified above on
+              strong #{@meeting.start_time.strftime("%B %-d at %-l:%M %p")}&nbsp;
+              - if @lesson.amount?
+                ' for
+                strong $#{@lesson.cost}
+          - else
+            div
+              ' I want to learn about the topic specified above from #{@lesson.user.first_name} on
+              strong #{@meeting.start_time.strftime("%B %-d at %-l:%M %p")}&nbsp;
+              - if @lesson.amount?
+                ' for
+                strong $#{@lesson.cost}
+          = link_to book_meeting_path(@meeting), class: "large radius button" do
+            | BOOK LESSON

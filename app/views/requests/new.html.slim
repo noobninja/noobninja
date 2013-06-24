@@ -1,0 +1,20 @@
+- content_for :javascript do
+  = javascript_include_tag "datetimepicker.min", "requests"
+.row
+  .small-12.large-6.columns.small-centered.large-centered
+    .section.top
+      = simple_form_for @request do |f|
+        .form-ribbon.first-ribbon Request Lesson
+        - if @request.errors.full_messages.any?
+         - @request.errors.full_messages.each do |error_message|
+          = error_message if @request.errors.full_messages.first == error_message
+        = f.error_notification
+        = f.input :name, label: "I want to learn..."
+        = f.simple_fields_for :meetings do |builder|
+          = f.label :start_time, "I'm Available..."
+          = render 'meeting_fields', f: builder
+        = link_to_add_fields "Add Availability", f, :meetings
+        = f.input :description, label: "Description (optional)"
+        = f.input :amount, label: "Tip Amount", collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: 2000, as: :radio_buttons
+
+        = f.button :submit, "SUBMIT REQUEST", class: "large radius button expand"

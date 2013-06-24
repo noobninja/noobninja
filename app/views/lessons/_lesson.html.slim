@@ -5,7 +5,7 @@
   - if lesson.amount?
     .lesson-amount
       span $
-      = lesson.amount.to_s
+      = lesson.cost
   .lesson-content
     .lesson-title
       = link_to lesson.user.first_name, lesson.user
@@ -13,13 +13,13 @@
       .lesson-name= link_to lesson.name, lesson
     .lesson-meetings
       - lesson.available_meetings.each do |meeting|
-        .lesson-meeting class=("booked" if meeting.booked?)
+        .lesson-meeting class=("#{'booked' if meeting.booked?} #{'active' if current_page?(meeting_path(meeting))}")
           = link_to meeting do
             i.icon-time
             = meeting.start_time.strftime("%B %-d")
             span |
             = meeting.start_time.strftime("%-l:%M %p")
-      - if lesson.type == "Offer" #&& (lesson.booked? || lesson.inactive?)
+      - if lesson.type == "Offer"
         .lesson-meeting
           = link_to lesson do
             i.icon-time

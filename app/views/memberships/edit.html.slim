@@ -1,0 +1,20 @@
+- content_for :stripe do
+  = javascript_include_tag "https://js.stripe.com/v1/"
+  = tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY
+- content_for :javascript do
+  = javascript_include_tag "memberships"
+.row
+  .large-6.columns.large-centered
+    .section.top
+      = render 'layouts/flash'
+      = simple_form_for @membership do |f|
+        .form-ribbon.first-ribbon Subscription Details
+        div id="stripe_error"
+          noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+        = f.input :plan_id, label: "Select One:", collection: [["$0/month - Teacher", 1], ["$20/month - Student + Teacher", 2], ["$10/month - Student + Teacher (Yearly)", 3]], checked: @membership.plan_id, as: :radio_buttons
+        = f.button :submit, "UPDATE SUBSCRIPTION", class: "large radius button expand"
+        .membership_footer
+          p
+            - if current_user.student?
+              | Your next billing date is #{current_user.membership.plan_id == 3 ? (DateTime.now.at_beginning_of_month.next_month + @created_at.day.days).strftime("%B %-e, %Y") : (DateTime.now.at_beginning_of_year + @created_at.month.months + @created_at.day.days).strftime("%B %-e, %Y")}
+          = image_tag("stripe/outline.png")

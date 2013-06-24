@@ -13,6 +13,7 @@ head
   = stylesheet_link_tag "application", media: "all"
   = javascript_include_tag "//use.typekit.com/ier1ulg.js", "vendor/custom.modernizr"
   = javascript_tag "try{Typekit.load()}catch(e){}"
+  == yield :stripe
   = csrf_meta_tags
 body
   = render 'layouts/navigation'

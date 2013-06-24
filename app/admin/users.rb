@@ -7,7 +7,7 @@ ActiveAdmin.register User do
     column :first_name
     column :last_name
     column :image do |user|
-      link_to image_tag(user.image, width: 100), user if user.image
+      link_to image_tag(user.image_url(:thumb)), user if user.image
     end
     column :time_zone
     column :description

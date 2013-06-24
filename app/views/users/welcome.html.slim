@@ -2,6 +2,7 @@
   .small-12.large-12.columns
     - if user_signed_in?
       .section.top
+        = render 'layouts/flash'
         .splash
           .splash-left
           .splash-right

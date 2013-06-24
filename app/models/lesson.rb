@@ -3,8 +3,12 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :user
   has_many :meetings, order: 'meetings.start_time'
+  accepts_nested_attributes_for :meetings
 
-  attr_accessible :amount, :description, :name, :tag_list, :type
+  attr_accessible :amount, :booked, :description, :name, :tag_list, :type, :meetings_attributes
+
+  validates :name, presence: true
+  validates :amount, presence: true
 
   scope :with_available_meetings, -> { includes(:user, :meetings).where("meetings.booked = ? AND meetings.start_time >= ?", false, Time.zone.now).order("meetings.start_time") }
 
@@ -12,11 +16,7 @@ class Lesson < ActiveRecord::Base
     meetings.where("meetings.start_time >= ?", Time.zone.now)
   end
 
-  # def booked?
-  #   meetings.where("meetings.booked = ?", false).blank?
-  # end
-
-  # def inactive?
-  #   meetings.where("meetings.start_time >= ?", Time.zone.now).blank?
-  # end
+  def cost
+    amount / 100
+  end
 end

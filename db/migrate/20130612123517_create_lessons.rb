@@ -5,6 +5,7 @@ class CreateLessons < ActiveRecord::Migration
       t.string :type
       t.integer :amount
       t.text :description
+      t.boolean :booked, default: false
       t.references :user
 
       t.timestamps

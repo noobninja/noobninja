@@ -8,6 +8,9 @@ Noobninja::Application.routes.draw do
   resources :requests
   resources :offers
   resources :meetings
+  resources :memberships
+
+  match 'book_meeting/:id' => 'meetings#book_meeting', as: :book_meeting
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
