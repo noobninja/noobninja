@@ -3,7 +3,7 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :user
   has_many :meetings, order: 'meetings.start_time'
-  accepts_nested_attributes_for :meetings
+  accepts_nested_attributes_for :meetings, allow_destroy: true
 
   attr_accessible :amount, :booked, :description, :name, :tag_list, :type, :meetings_attributes
 

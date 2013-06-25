@@ -1,2 +1,43 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+.row
+  .small-12.large-12.columns
+    .section.top
+      = render 'layouts/flash'
+      .user
+        .row
+          .large-1.columns
+            .user-image= image_tag @user.image
+          .large-8.columns
+            .user-details
+              .user-name
+                = @user.name
+              .user-tags
+                - if @user.tags.blank?
+                  = link_to edit_user_registration_path do
+                    i.icon-plus
+                    | ADD TAGS
+                - else
+                  - @user.tags.each do |tag|
+                    .user-tag= link_to tag, root_path(tag: tag.name)
+          .large-3.columns
+            .user-stats
+              .user-show-description
+                i.icon-reorder
+                | About
+              .user-donations
+                i.icon-heart
+                = "$#{@user.donations_in_dollars}"
+        .row
+          .large-12.columns
+            .user-description= @user.description
+    - if @offers.present?
+      .welcome-title
+        .welcome-ribbon
+          | My Lessons
+      .section
+        = render partial: "lessons/lesson", collection: @offers, as: :lesson
+    - if @requests.present?
+      .welcome-title
+        .welcome-ribbon
+          | My Requests
+      .section
+        = render partial: "lessons/lesson", collection: @requests, as: :lesson

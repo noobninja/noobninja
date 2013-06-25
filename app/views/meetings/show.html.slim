@@ -11,20 +11,48 @@
           BR
           ' Please be respectful and give advance warning if you will be unable to attend.
       - else
+        .section-header
         .book-lesson
           - if @lesson.type == "Request"
             div
               ' I can help #{@lesson.user.first_name} learn about the topic specified above on
-              strong #{@meeting.start_time.strftime("%B %-d at %-l:%M %p")}&nbsp;
+              br
+              strong #{@meeting.start_time.strftime("%B %-d")}&nbsp;
+              ' at
+              strong #{@meeting.start_time.strftime("%-l:%M %p")}&nbsp;
               - if @lesson.amount?
                 ' for
                 strong $#{@lesson.cost}
           - else
             div
               ' I want to learn about the topic specified above from #{@lesson.user.first_name} on
-              strong #{@meeting.start_time.strftime("%B %-d at %-l:%M %p")}&nbsp;
+              br
+              strong #{@meeting.start_time.strftime("%B %-d")}&nbsp;
+              ' at
+              strong #{@meeting.start_time.strftime("%-l:%M %p")}&nbsp;
               - if @lesson.amount?
                 ' for
                 strong $#{@lesson.cost}
-          = link_to book_meeting_path(@meeting), class: "large radius button" do
-            | BOOK LESSON
+          - if @lesson.amount == 0
+            = link_to book_meeting_path(@meeting, free: true), class: "radius button expand" do
+              | BOOK FREE LESSON
+          - elsif @lesson.type == "Request"
+            - if current_user.member?
+              = link_to book_meeting_path(@meeting), class: "radius button expand" do
+                | BOOK LESSON FOR $#{@lesson.cost}
+              br
+            - else
+              .provide-details
+                | You must #{link_to "provide your account details", new_membership_path(teacher: true)}
+                br
+                | to collect the $#{@lesson.cost} tip for this lesson
+                br
+            = link_to book_meeting_path(@meeting, free: true), class: "radius button expand" do
+              | BOOK LESSON FOR FREE
+            br
+            = link_to book_meeting_path(@meeting, donate: true), class: "radius button expand" do
+              | BOOK LESSON AND GIVE $#{@lesson.cost} TO CHARITY
+          - else
+            = link_to book_meeting_path(@meeting), class: "large radius button" do
+              | BOOK LESSON FOR $#{@lesson.cost}
+        .section-footer

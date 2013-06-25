@@ -29,26 +29,34 @@
         h1
           span Get helped
           | &nbsp;out via Hangouts.
-        p Get and give 10-minute lessons on specific programming and design tasks via video chat.
+        p Get and give 10-minute lessons on programming and design concepts for charity (or profit).
         .pitch-buttons
           = link_to new_user_registration_path, class: 'large radius button' do
             | REQUEST MEMBERSHIP
       .welcome-boxes
-        .welcome-box
-          span.icon-stack.icon-4x
-            i.icon-circle.icon-stack-base
-            i.icon-code.icon-light
-          p Request or offer 10-minute lessons on any coding or design topic
-        .welcome-box
-          span.icon-stack.icon-4x
-            i.icon-circle.icon-stack-base
-            i.icon-money.icon-light
-          p Optionally, attach a small tip of up to $20 to your request or offer
-        .welcome-box
-          span.icon-stack.icon-4x
-            i.icon-circle.icon-stack-base
-            i.icon-heart-empty.icon-light
-          p Keep what you raise or donate it to the charity of the month
+        .welcome-boxes-inner
+          .welcome-box
+            span.icon-stack
+              i.icon-circle.icon-stack-base
+              i.icon-code.icon-light
+            p Request or offer 10-minute lessons on any coding or design topic
+          .welcome-box
+            span.icon-stack
+              i.icon-circle.icon-stack-base
+              i.icon-money.icon-light
+            p Optionally, attach a small tip of up to $25 to your request or offer
+          .welcome-box
+            span.icon-stack
+              i.icon-circle.icon-stack-base
+              i.icon-heart-empty.icon-light
+            p Keep what you raise or donate it towards our fundraising goal.
+      .welcome-charity.group
+        .welcome-charity-image= image_tag("charitywater.jpg")
+        .welcome-charity-content
+          h2 charity: water
+          | Our fundraising goal this month is $5000 - in order to #{link_to "sponsor a water project", "http://www.charitywater.org/donate/sponsor-a-project", target: "_blank"}.
+          BR
+          | A typical water project can serve 150-300 people in a community. You’ll be recognized as the project sponsor, and you’ll receive a completion report when the work is finished.
     .welcome-title
       .welcome-ribbon
         | Example Lessons

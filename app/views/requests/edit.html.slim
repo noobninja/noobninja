@@ -3,7 +3,6 @@
 .row
   .small-12.large-6.columns.small-centered.large-centered
     .section.top
-      = render 'layouts/flash'
       = simple_form_for @request do |f|
         .form-ribbon.first-ribbon Request Lesson
         = f.input :name, label: "I want to learn..."
@@ -13,6 +12,6 @@
         = link_to_add_fields "Add Availability", f, :meetings
         = f.input :description, label: "Description (optional)"
         = f.label :amount, "Tip Amount"
-        = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: 2000, as: :radio_buttons
+        = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @request.amount, as: :radio_buttons
 
-        = f.button :submit, "SUBMIT REQUEST", class: "large radius button expand"
+        = f.button :submit, "UPDATE REQUEST", class: "large radius button expand"

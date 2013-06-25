@@ -3,7 +3,6 @@
 .row
   .small-12.large-6.columns.small-centered.large-centered
     .section.top
-      = render 'layouts/flash'
       = simple_form_for @offer do |f|
         .form-ribbon.first-ribbon Offer Lesson
         = f.input :name, label: "I want to teach..."
@@ -14,11 +13,11 @@
         = f.input :description, label: "Description (optional)"
         = f.label :amount, "Tip Amount"
         - if current_user.member?
-          = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: 2000, as: :radio_buttons
+          = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @offer.amount, as: :radio_buttons
         - else
           = f.input :amount, label: false, collection: [["$0", 0]], checked: 0, as: :radio_buttons
           .provide-details
             | Please #{link_to "provide your account details", new_membership_path(teacher: true)}
             br
             | to attach a tip to this lesson
-        = f.button :submit, "SUBMIT OFFER", class: "large radius button expand"
+        = f.button :submit, "EDIT LESSON", class: "large radius button expand"

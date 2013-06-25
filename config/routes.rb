@@ -1,5 +1,9 @@
 Noobninja::Application.routes.draw do
-  root to: 'lessons#index'
+  authenticated :user do
+    root to: 'lessons#index'
+  end
+  root to: 'users#welcome'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -11,6 +15,13 @@ Noobninja::Application.routes.draw do
   resources :memberships
 
   match 'book_meeting/:id' => 'meetings#book_meeting', as: :book_meeting
+
+  # authenticated :user do
+  #   devise_for :users do
+  #     root to: 'lessons#index'
+  #   end
+  # end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

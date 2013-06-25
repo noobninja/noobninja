@@ -9,7 +9,8 @@ class MembershipsController < ApplicationController
     @plan_id = params[:membership][:plan_id].to_i
 
     if @membership.save_membership
-      redirect_to lessons_path, notice: @plan_id == 1 ? "Bank account verified! You can now start collecting lesson fees." : "Thank you for subscribing. Now start learning!"
+      current_user.update_attributes(name: @membership.name) if @membership.name != current_user.name
+      redirect_to lessons_path, notice: @plan_id == 1 ? "Bank account verified! You can now start collecting tips for giving lessons." : "Thank you for subscribing. You can now give and get lessons, as well as collect tips!"
     else
       render :new
     end

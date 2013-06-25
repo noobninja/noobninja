@@ -11,7 +11,7 @@
         .form-ribbon.first-ribbon Subscription Details
         div id="stripe_error"
           noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
-        = f.input :plan_id, label: "Select One:", collection: [["$0/month - Teacher", 1], ["$20/month - Student + Teacher", 2], ["$10/month - Student + Teacher (Yearly)", 3]], checked: @membership.plan_id, as: :radio_buttons
+        = f.input :plan_id, label: "Select One:", collection: [["$0/month - Teacher #{'[Current Plan]' if current_user.membership.plan_id == 1}", 1], ["$20/month - Student + Teacher #{'[Current Plan]' if current_user.membership.plan_id == 2}", 2], ["$10/month - Student + Teacher (Yearly) #{'[Current Plan]' if current_user.membership.plan_id == 3}", 3]], checked: @membership.plan_id, as: :radio_buttons
         = f.button :submit, "UPDATE SUBSCRIPTION", class: "large radius button expand"
         .membership_footer
           p

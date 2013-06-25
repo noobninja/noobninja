@@ -24,4 +24,3 @@ jQuery ->
       startDate: new Date()
 
   datetimepicker()
-  $('form .remove_fields').hide();

@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(:version => 20130623170750) do
     t.text     "image"
     t.text     "description"
     t.string   "time_zone"
+    t.integer  "freebies",               :default => 0
+    t.integer  "donations",              :default => 0
     t.boolean  "member",                 :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false

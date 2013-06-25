@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require foundation
+#= require autosize.min
 #= require select2.min
 #= require purl
 
@@ -21,3 +22,8 @@ jQuery ->
           $(this).html('Get helped').fadeIn('slow')
       )
     , 7500)
+
+  $('textarea').autosize()
+  $('.alert-box').delay(8000).slideToggle('slow')
+  $('.user-show-description').on 'click', (e)->
+    $('.user-description').slideToggle()

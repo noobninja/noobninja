@@ -41,6 +41,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.text    :image
       t.text    :description
       t.string  :time_zone
+      t.integer :freebies, default: 0
+      t.integer :donations, default: 0
       t.boolean :member, default: false
 
       t.timestamps

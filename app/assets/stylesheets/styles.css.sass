@@ -8,7 +8,7 @@ $PURPLE: #B52B70
 
 // MIXINS
 @mixin button($color)
-  background: $color url(image_path('textures/waves.png'))
+  background: $color url('textures/waves.png')
   box-shadow: 0 5px 0 0 darken($color, 10%)
   i
     margin-right: 6px
@@ -31,6 +31,20 @@ $PURPLE: #B52B70
   border-top: 0
   border-top-left-radius: 0
   border-top-right-radius: 0
+
+.section-header
+  background: #FFF url('textures/waves.png')
+  border-bottom: 1px solid #EEE
+  border-radius: 2px 2px 0 0
+  height: emCalc(40px)
+  margin: 2px 2px 0
+
+.section-footer
+  background: #FFF url('textures/waves.png')
+  border-top: 1px solid #EEE
+  border-radius: 0 0 2px 2px
+  height: emCalc(40px)
+  margin: 0 2px 2px
 
 .button
   @include button($primary-color)
@@ -104,14 +118,18 @@ form.custom .custom.dropdown
   span
     font-weight: 100
     margin-right: 6px
+  i
+    margin-right: 8px
   &:hover
-    color: #AAA
+    color: #CCC
 
 .top-bar-section ul li.active > a
   background: rgba(255,255,255,0.05)
   color: #FBFBFB
   font-weight: 600
   position: relative
+  &:hover
+    color: #FBFBFB
   &:after
     bottom: -1px
     border: solid transparent
@@ -128,6 +146,16 @@ form.custom .custom.dropdown
 .top-bar-section > ul > .divider
   height: 16px
   margin-top: 15px
+
+.top-bar-section ul.right li .dropdown
+  background: rgba(0,0,0,0.85)
+  border-radius: 0 0 4px 4px
+  li
+    a
+      color: #999
+      padding: emCalc(15px) emCalc(30px)
+      &:hover
+        color: #FFF
 
 // FOOTER
 footer
@@ -158,12 +186,59 @@ footer
   p
     color: #706C75
 
-  .pitch-buttons
-    background: url('textures/waves.png')
-    margin-top: emCalc(40px)
-    padding: 0 0 emCalc(5px)
-    a
-      margin: 0 emCalc(10px)
+.pitch-buttons
+  background: url('textures/waves.png')
+  margin-top: emCalc(40px)
+  padding: 0 0 emCalc(5px)
+  a
+    margin: 0 emCalc(10px)
+
+.welcome-charity
+  background: whiteSmoke
+  border: 2px solid #DDD
+  border-radius: 4px
+  margin: 0 emCalc(40px) emCalc(40px)
+  min-height: emCalc(200px)
+
+$charity-image-width: emCalc(200px)
+
+.welcome-charity-image
+  border-right: 2px solid #DDD
+  float: left
+  width: $charity-image-width
+  img
+    border-radius: 3px 0 0 3px
+
+.welcome-charity-content
+  border: 1px solid #FFF
+  border-radius: 0 3px 3px 0
+  color: $GREY
+  font-weight: 400
+  margin-left: $charity-image-width
+  padding: emCalc(27px) emCalc(40px) emCalc(38px)
+  a
+    color: $BLUE
+    font-weight: 600
+
+// .welcome-charity
+//   background: whiteSmoke
+//   border: 2px dashed #DDD
+//   border-radius: 4px
+//   margin: 0 emCalc(40px) emCalc(40px)
+//   img
+//     border-radius: 2px 0 0 2px
+//     border-right: 2px dashed #DDD
+//     float: left
+//     width: emCalc(175px)
+
+// .pitch-charity-content
+//   color: $GREY
+//   font-weight: 500
+//   margin-left: emCalc(170px)
+//   padding: emCalc(20px) emCalc(50px)
+//   a
+//     color: $BLUE
+//     font-weight: 600
 
 // WELCOME
 .welcome-title
@@ -208,11 +283,17 @@ footer
   border-radius: 4px
   margin: 0 emCalc(40px) emCalc(40px)
 
+.welcome-boxes-inner
+  border: 1px solid #FFF
+  border-radius: 3px
+
 .welcome-box
   display: inline-block
   text-align: center
-  padding: emCalc(20px)
+  padding: emCalc(15px) emCalc(20px)
   width: 33.33%
+  .icon-stack
+    font-size: 3.8em
   i.icon-circle
     color: $GREY
   p
@@ -277,38 +358,74 @@ footer
   margin-bottom: emCalc(30px)
 
 // NEW REQUEST
-#new_request, #new_offer
+#new_request, #new_offer, .edit_request, .edit_offer
   padding: emCalc(25px) emCalc(40px) emCalc(40px)
 
-#new_request .add_fields, #new_offer .add_fields
+.add_fields
+  border: 1px solid $GREEN
+  border-radius: 400px
   display: inline-block
-  margin-bottom: 1em
+  font-size: emCalc(14px)
+  font-weight: 500
+  margin-bottom: emCalc(20px)
+  padding: emCalc(7px) emCalc(14px) emCalc(5px)
   i
     margin-right: 6px
 
-#new_request .remove_fields, #new_offer .remove_fields
-  color: $GREY
+.remove_fields
+  border: 1px solid #DDD
+  border-radius: 400px
+  color: #999
   display: inline-block
   float: right
-  margin-bottom: 1em
+  font-size: emCalc(14px)
+  font-weight: 500
+  margin-bottom: emCalc(20px)
+  padding: emCalc(7px) emCalc(14px) emCalc(5px)
   i
     margin-right: 6px
+  &:hover
+    border-color: $PURPLE
+    color: $PURPLE
 
-#new_request .request_amount, #new_offer .offer_amount
-  background: whiteSmoke
-  border: 1px solid #EEE
+.request_amount, .offer_amount
+  background: #F6F5EF
+  border: 2px solid #DDDACE
   border-radius: 4px
   margin-bottom: emCalc(20px)
-  padding: emCalc(15px) 0 emCalc(5px) 0
+  padding: emCalc(15px) 0 emCalc(5px)
   text-align: center
+  label.control-label
+    margin-top: 1em
+    margin-bottom: 0.5em
   label:not(.control-label)
     display: inline-block
-    margin-top: 5px
     margin-right: emCalc(25px)
-    &:last-child
-      margin-right: 0
     input
-      margin-right: emCalc(8px)
+      margin-right: emCalc(10px)
+    &:last-child
+      margin: 0
+//     display: inline-block
+//     margin-top: 5px
+//     margin-right: emCalc(25px)
+//     &:last-child
+//       margin-right: 0
+//     input
+//       margin-right: emCalc(8px)
+
+// .request_amount, .offer_amount
+//   margin-bottom: 1.5em
+//   label.control-label
+//     margin-top: 1em
+//     margin-bottom: 0.5em
+//   label:not(.control-label)
+//     background: #F6F5EF
+//     border: 2px solid #DDDACE
+//     border-radius: 4px
+//     margin-bottom: 0.5em
+//     padding: emCalc(15px) 0 emCalc(5px) emCalc(15px)
+//     input
+//       margin-right: emCalc(10px)
 
 .provide-details
   background: whiteSmoke
@@ -324,21 +441,6 @@ footer
 #new_membership, .edit_membership
   padding: emCalc(25px) emCalc(40px) emCalc(25px)
 
-// #new_membership .membership_plan_id
-//   background: whiteSmoke
-//   border: 1px solid #EEE
-//   border-radius: 4px
-//   margin: 1em 0 2em
-//   padding: emCalc(15px) 0 emCalc(5px) 0
-//   text-align: center
-//   label:not(.control-label)
-//     display: inline-block
-//     text-transform: lowercase
-//     input
-//       margin-right: emCalc(8px)
-//     &:first-child
-//       margin-right: emCalc(25px)
-
 #new_membership .membership_plan_id, .edit_membership .membership_plan_id
   margin-bottom: 1.5em
   label.control-label
@@ -352,15 +454,6 @@ footer
     padding: emCalc(15px) 0 emCalc(5px) emCalc(15px)
     input
       margin-right: emCalc(10px)
-
-.membership_status
-  // padding: emCalc(25px) emCalc(40px) emCalc(40px)
-  // text-align: center
-  // img
-  //   margin: emCalc(10px) 0 emCalc(15px)
-  // div
-  //   color: $GREEN
-  //   font-weight: 500
 
 .membership_footer
   color: #8d9ba2
@@ -419,7 +512,7 @@ footer
   border-radius: 0 0 2px 2px
   ul
     list-style: none
-    padding: emCalc(7px) emCalc(7px) emCalc(9px)
+    padding: emCalc(10px) emCalc(10px) emCalc(9px)
     li
       display: inline-block
       a
@@ -476,6 +569,113 @@ footer
     font-weight: 600
     &:hover
       color: $PURPLE
+
+// USER
+.user
+  padding: emCalc(2px)
+
+.user-image
+  width: 60px
+  img
+    border-radius: 0 0 0 2px
+
+.user-details
+  margin: emCalc(6px) 0 0
+
+.user-name
+  font-size: emCalc(23px)
+  font-weight: 700
+
+.user-tags
+  margin-top: emCalc(5px)
+  a
+    border: 1px solid $GREEN
+    border-radius: 4px
+    font-size: emCalc(13px)
+    font-weight: 500
+    padding: emCalc(2px) emCalc(10px) emCalc(1px)
+    i
+      margin-right: emCalc(8px)
+
+.user-tag
+  a
+    margin-right: emCalc(10px)
+
+.user-stats
+  margin: emCalc(11px) emCalc(13px) 0 0
+  text-align: right
+
+.user-show-description
+  color: $GREY
+  display: inline-block
+  font-weight: 400
+  margin-right: emCalc(20px)
+  i
+    margin-right: emCalc(8px)
+  &:hover
+    color: $GREEN
+
+.user-donations
+  background: $GREY
+  border-radius: 4px
+  box-shadow: 0 2px 0 0 darken($GREY, 15%)
+  color: #FFF
+  display: inline-block
+  font-size: emCalc(19px)
+  padding: emCalc(7px) emCalc(10px) emCalc(5px)
+  i
+    margin-right: emCalc(8px)
+
+.user-description
+  background: whiteSmoke
+  border-top: 1px solid #EEE
+  color: $GREY
+  display: none
+  font-weight: 500
+  margin-top: 2px
+  padding: emCalc(15px)
+// $user-image-size: emCalc(60px)
+// $user-padding-top: emCalc(25px)
+
+// .user
+//   min-height: $user-image-size + ($user-padding-top * 2) + emCalc(8px)
+//   padding-left: emCalc(40px)
+//   position: relative
+
+// .user-image
+//   background: url('textures/waves.png')
+//   padding: $user-padding-top 0
+//   position: absolute
+//   top: 2px
+//   bottom: 2px
+//   width: $user-image-size
+//   a
+//     img
+//       border-top: 2px solid #FFF
+//       border-bottom: 2px solid #FFF
+
+// .user-content
+//   padding: $user-padding-top 0
+//   margin-left: $user-image-size + emCalc(20px)
+//   margin-right: emCalc(70px) + emCalc(5px)
+
+// .user-title
+//   color: #007AA6
+//   font-size: emCalc(28px)
+//   font-weight: 600
+//   line-height: emCalc(20px)
+//   margin-top: emCalc(2px)
+
+// .user-tag
+//   display: inline-block
+//   margin-top: emCalc(2px)
+//   a
+//     color: $GREY
+//     display: block
+//     font-weight: 600
+//     margin-right: emCalc(10px)
+//     &:hover
+//       color: $GREEN
 
 // LESSON
 $lesson-image-size: emCalc(60px)
@@ -615,6 +815,20 @@ $lesson-padding-top: emCalc(25px)
     box-shadow: 0 2px 0 0 darken($GREEN, 10%)
     color: #F1F3DD
 
+.lesson.offer > .lesson-content > .lesson-meetings > .lesson-meeting.booked_by_me
+  a
+    background: $PURPLE
+    border: 1px solid $PURPLE
+    box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+    color: #F1F3DD
+
+.lesson.offer > .lesson-content > .lesson-meetings > .lesson-meeting.active.booked_by_me
+  a
+    background: $PURPLE
+    border: 1px solid $PURPLE
+    box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+    color: #F1F3DD
+
 .lesson-meeting.booked
   cursor: default
   pointer-events: none
@@ -628,21 +842,56 @@ $lesson-padding-top: emCalc(25px)
       box-shadow: 0 2px 0 0 darken(#CCC, 10%)
       color: #808080
 
-.lesson-meeting.booked.active
+.lesson-meeting.active.booked
   a
     box-shadow: 0 2px 0 0 darken(#CCC, 10%)
+
+.lesson-meeting.booked_by_me
+  a
+    background: $PURPLE
+    border: 1px solid $PURPLE
+    box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+    color: #F1F3DD
+
+.lesson-meeting.active.booked_by_me
+  a
+    box-shadow: 0 2px 0 0 darken(#CCC, 10%)
+
+// .lesson-meeting.booked_by_me
+//   cursor: default
+//   pointer-events: auto
+//   a
+//     background: $PURPLE
+//     border-color: $PURPLE
+//     box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+//     color: #F1F3DD
+//     &:hover
+//       background: $PURPLE
+//       border: 1px solid $PURPLE
+//       box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+//       // color: #808080
+
+// .lesson-meeting.active.booked_by_me
+//   a
+//     box-shadow: 0 2px 0 0 darken(#CCC, 10%)
 
 // SHOW MEETING
 .book-lesson
   color: $GREY
-  font-size: emCalc(17px)
+  font-size: emCalc(18px)
   font-weight: 300
-  padding: emCalc(30px) emCalc(20px)
+  padding: emCalc(40px) emCalc(20px)
   text-align: center
+  div
+    line-height: 25px
+    margin-bottom: emCalc(20px)
   strong
     color: #333
   a
     margin-top: emCalc(20px)
+
+.book-lesson > .button
+  max-width: 50%
 
 // RESPONSIVE
 // We use this media query to add styles to any device that supports media queries
@@ -662,6 +911,45 @@ $lesson-padding-top: emCalc(25px)
   .welcome-box
     display: block
     width: 100%
+
+  .welcome-charity
+    margin: 0 emCalc(20px) emCalc(20px)
+
+  .welcome-charity-image
+    background: #FFF
+    border-radius: 3px 3px 0 0
+    border-bottom: 2px solid #DDD
+    border-right: 0
+    float: none
+    text-align: center
+    width: auto
+    img
+      border-radius: 3px 3px 0 0
+      width: emCalc(200px)
+
+  .welcome-charity-content
+    margin-left: 0
+    padding: emCalc(20px) emCalc(40px)
+    h2
+      margin-bottom: 10px
+
+  // USER
+  .user
+    text-align: center
+
+  .user-name
+    font-size: emCalc(30px)
+
+  .user-image
+    margin-bottom: emCalc(20px)
+    width: auto
+    img
+      margin: 0 auto
+
+  .user-stats
+    margin: emCalc(20px) 0
+    text-align: center
+
 
   // LESSON
   $lesson-image-size-responsive: emCalc(40px)
@@ -683,6 +971,7 @@ $lesson-padding-top: emCalc(25px)
     padding: 5px 11px 3px
 
   .lesson-content
+    border-radius: 0 0 3px 3px
     padding: $lesson-padding-top-responsive 0
     margin-left: $lesson-image-size-responsive + emCalc(20px)
     margin-right: emCalc(50px)
@@ -696,6 +985,9 @@ $lesson-padding-top: emCalc(25px)
     a
       i
         float: left
+
+  .book-lesson > .button
+    max-width: 100%
 
 // Used to alter styles for screens at least 768px wide. This is where the grid changes.
 @media only screen and (min-width: 768px)

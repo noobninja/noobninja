@@ -5,7 +5,7 @@
         / = f.error_notification
         .form-inputs
           .form-ribbon.first-ribbon Basic Information
-          = f.input :name, required: true, autofocus: true
+          = f.input :name, label: "Full Name", required: true, autofocus: true
           = f.input :email, required: true
           = f.input :password, required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
@@ -18,6 +18,6 @@
             BR
             ' We stay afloat by asking
             strong only&nbsp;
-            | those members that are seeking help for a monthly ($20/month) or yearly ($9/month) membership contribution.
+            | those members that are seeking help for a monthly ($20/month) or yearly ($10/month) membership contribution.
         .form-actions
           = f.button :submit, "REQUEST MEMBERSHIP", class: "large radius button expand"

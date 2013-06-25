@@ -11,10 +11,31 @@
     section.top-bar-section
       ul.right
         - if user_signed_in?
-          li= link_to 'Account', current_user.member? ? edit_membership_path(current_user.membership) : new_membership_path
-          li.divider
-          li= link_to 'Profile', edit_user_registration_path
-          li.divider
-          li= link_to 'Logout', destroy_user_session_path, method: :delete
+          li class=("active" if current_page?(root_path) || current_page?(lessons_path))
+            = link_to root_path do
+              span 道場
+              | Dojo
+          li class=("active" if current_page?(user_path(current_user)))
+            = link_to current_user do
+              span 前板
+              | Dashboard
+          li.has-dropdown
+            a href="#"
+              i.icon-cog style="margin: 0;"
+            ul.dropdown
+              li
+                = link_to current_user.member? ? edit_membership_path(current_user.membership) : new_membership_path do
+                  i.icon-credit-card
+                  | Subscription
+              li.divider
+              li
+                = link_to edit_user_registration_path do
+                  i.icon-user
+                  | Profile
+              li.divider
+              li
+                = link_to destroy_user_session_path, method: :delete do
+                  i.icon-signout
+                  | Logout
         - else
           li= link_to 'ログイン Member Login', new_user_session_path

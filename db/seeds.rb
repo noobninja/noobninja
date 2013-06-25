@@ -29,13 +29,13 @@ puts "CREATE LESSONS"
   offer = user.offers.create(
     name: Faker::Lorem.sentences(2).join(" "),
     description: Faker::Lorem.paragraph,
-    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 2000 : 1000,
+    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 2500 : 1500,
     tag_list: tags.sample(rand(1..5)).join(", ")
   )
   request = user.requests.create(
     name: Faker::Lorem.sentences(2).join(" "),
     description: Faker::Lorem.paragraph,
-    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 2000 : 1000,
+    amount: rand(1..2).even? ? 0 : rand(1..2).even? ? 2500 : 1500,
     tag_list: tags.sample(rand(1..5)).join(", ")
   )
   rand(1..3).times do

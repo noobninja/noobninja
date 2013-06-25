@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :first_name, :last_name, :username, :description, :image, :image_cache,
-                  :tag_list, :time_zone, :member
+                  :tag_list, :time_zone, :member, :donations
 
   validates :name, presence: true
   validates :description, presence: true
@@ -33,10 +33,16 @@ class User < ActiveRecord::Base
   def member?
     membership.present?
   end
+
   def student?
     membership.present? && (membership.plan_id > 1)
   end
+
   def teacher?
     membership.present? && membership.plan_id == 1
+  end
+
+  def donations_in_dollars
+    donations / 100
   end
 end

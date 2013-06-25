@@ -528,8 +528,8 @@ disabled look for disabled choices in the results dropdown
 }
 
 .select2-container-multi .select2-choices .select2-search-choice {
-    padding: 3px 5px 3px 18px;
-    margin: 3px 0 3px 5px;
+    padding: 3px 5px 3px 20px;
+    margin: 6px 0 3px 5px;
     position: relative;
 
     line-height: 13px;
@@ -537,9 +537,12 @@ disabled look for disabled choices in the results dropdown
     cursor: default;
     border: 1px solid #aaaaaa;
 
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
+    font-size: 14px;
+    font-weight: 700;
+
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
 
     -webkit-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
        -moz-box-shadow: 0 0 2px #ffffff inset, 0 1px 0 rgba(0,0,0,0.05);
@@ -582,15 +585,15 @@ disabled look for disabled choices in the results dropdown
 
     font-size: 1px;
     outline: none;
-    background: url('select2.png') right top no-repeat;
+    background: url('select2.png') -40px -2px no-repeat;
 }
 
 .select2-container-multi .select2-search-choice-close {
-    left: 3px;
+    left: 4px;
 }
 
 .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close:hover {
-  background-position: right -11px;
+  background-position: -40px -18px;
 }
 .select2-container-multi .select2-choices .select2-search-choice-focus .select2-search-choice-close {
     background-position: right -11px;
