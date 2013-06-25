@@ -41,8 +41,4 @@ class User < ActiveRecord::Base
   def teacher?
     membership.present? && membership.plan_id == 1
   end
-
-  def donations_in_dollars
-    donations / 100
-  end
 end
