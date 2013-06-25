@@ -10,8 +10,7 @@
           = image_tag(current_user.image_url(:thumb), class: "image_preview") if @user.image?
           = f.input :image, as: :file, label: "Avatar"
           = f.input :image_cache, as: :hidden
-          = f.input :first_name, required: true, autofocus: true
-          = f.input :last_name, required: false
+          = f.input :name, required: true, autofocus: true
           = f.input :email, required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
           = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
