@@ -22,7 +22,10 @@
             ul
               = collection_select :lesson, :tags, @lesson_tags, :slug, :name, {include_blank: true, selected: @selected_tag.try(:slug)}, {class: "select2-select"}
     .section
-      = render partial: "lessons/lesson", collection: @lessons, as: :lesson
-      - unless params[:type] == "request"
-        = render partial: "lessons/lesson", collection: @inactive_lessons, as: :lesson
+      - if @lessons.blank? && @inactive_lessons.blank?
+        = render "lessons/empty"
+      - else
+        = render partial: "lessons/lesson", collection: @lessons, as: :lesson
+        - unless params[:type] == "request"
+          = render partial: "lessons/lesson", collection: @inactive_lessons, as: :lesson
     = render 'layouts/footer'

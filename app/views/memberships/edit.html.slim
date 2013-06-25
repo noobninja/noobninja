@@ -18,3 +18,4 @@
             - if current_user.student?
               | Your next billing date is #{current_user.membership.plan_id == 3 ? (DateTime.now.at_beginning_of_month.next_month + @created_at.day.days).strftime("%B %-e, %Y") : (DateTime.now.at_beginning_of_year + @created_at.month.months + @created_at.day.days).strftime("%B %-e, %Y")}
           = image_tag("stripe/outline.png")
+    = render 'layouts/footer'

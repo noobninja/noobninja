@@ -10,7 +10,7 @@
     .lesson-title
       = link_to lesson.user.first_name, lesson.user
       span= lesson.type == "Offer" ? lesson.available_meetings.blank? ? "can teach" : "is teaching" : "wants to learn"
-      .lesson-name= link_to lesson.name, lesson
+      .lesson-name= link_to lesson.name, lesson.meetings.first
     .lesson-meetings
       - lesson.available_meetings.each do |meeting|
         .lesson-meeting class=("#{'active' if current_page?(meeting_path(meeting))} #{'booked' if meeting.booked? && !meeting.users.include?(current_user)} #{'booked_by_me' if meeting.booked? && meeting.users.include?(current_user)}")

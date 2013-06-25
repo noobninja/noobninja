@@ -11,7 +11,9 @@ class LessonsController < ApplicationController
     end
 
     if @lessons.blank?
-      if params[:tag]
+      if params[:type] == "request"
+        @inactive_lessons = nil
+      elsif params[:tag]
         @inactive_lessons = Offer.includes(:user, :meetings).tagged_with(params[:tag])
       else
         @inactive_lessons = Offer.includes(:user, :meetings).all

@@ -29,15 +29,20 @@
         .row
           .large-12.columns
             .user-description= @user.description
+    - if @offers.blank? && @requests.blank?
+      .section
+        .empty-lessons
+          | You haven't offered or requested any help yet. #{link_to "Go to Dojo", lessons_path}
     - if @offers.present?
       .welcome-title
         .welcome-ribbon
-          | My Lessons
+          | Lesson's I've Offered
       .section
         = render partial: "lessons/lesson", collection: @offers, as: :lesson
     - if @requests.present?
       .welcome-title
         .welcome-ribbon
-          | My Requests
+          | Lesson's I've Requested
       .section
         = render partial: "lessons/lesson", collection: @requests, as: :lesson
+    = render 'layouts/footer'

@@ -24,3 +24,4 @@ jQuery ->
       startDate: new Date()
 
   datetimepicker()
+  $("#request_tag_list").select2()

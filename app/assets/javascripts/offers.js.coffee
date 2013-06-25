@@ -24,3 +24,4 @@ jQuery ->
       startDate: new Date()
 
   datetimepicker()
+  $("#offer_tag_list").select2()

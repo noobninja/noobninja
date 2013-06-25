@@ -3,6 +3,11 @@
 .row
   .small-12.large-6.columns.small-centered.large-centered
     .section.top
+      = render 'layouts/flash'
+      - if @request.errors.full_messages.any?
+        .alert-box.secondary data-alert=""
+          - @request.errors.full_messages.each do |error_message|
+            = error_message if @request.errors.full_messages.first == error_message
       = simple_form_for @request do |f|
         .form-ribbon.first-ribbon Request Lesson
         = f.input :name, label: "I want to learn..."
@@ -11,7 +16,10 @@
           = render 'meeting_fields', f: builder
         = link_to_add_fields "Add Availability", f, :meetings
         = f.input :description, label: "Description (optional)"
+        = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), input_html: { multiple: true }
+        .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions
         = f.label :amount, "Tip Amount"
         = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @request.amount, as: :radio_buttons
 
         = f.button :submit, "UPDATE REQUEST", class: "large radius button expand"
+    = render 'layouts/footer'

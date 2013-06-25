@@ -9,6 +9,7 @@ class Lesson < ActiveRecord::Base
 
   validates :name, presence: true
   validates :amount, presence: true
+  validate :number_of_tags
 
   scope :with_available_meetings, -> { includes(:user, :meetings).where("meetings.booked = ? AND meetings.start_time >= ?", false, Time.zone.now).order("meetings.start_time") }
 
@@ -18,5 +19,9 @@ class Lesson < ActiveRecord::Base
 
   def cost
     amount / 100
+  end
+
+  def number_of_tags
+    errors.add(:lesson, "- please add at least 1 tag") if self.tag_list.length < 1
   end
 end

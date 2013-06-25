@@ -29,7 +29,7 @@
         h1
           span Get helped
           | &nbsp;out via Hangouts.
-        p Get and give 10-minute lessons on programming and design concepts for charity (or profit).
+        p Get and give 10-minute lessons on programming and design concepts for charity (and profit)
         .pitch-buttons
           = link_to new_user_registration_path, class: 'large radius button' do
             | REQUEST MEMBERSHIP
@@ -50,7 +50,8 @@
               i.icon-circle.icon-stack-base
               i.icon-heart-empty.icon-light
             p Keep what you raise or donate it towards our fundraising goal.
-      .welcome-charity.group
+    .section
+      .welcome-charity
         .welcome-charity-image= image_tag("charitywater.jpg")
         .welcome-charity-content
           h2 charity: water

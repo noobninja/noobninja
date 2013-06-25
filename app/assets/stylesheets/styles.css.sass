@@ -94,6 +94,11 @@ form label
 form.custom .custom.dropdown
   font-weight: 500
 
+.tag-suggestions
+  color: $GREY
+  font-weight: 300
+  margin-bottom: 1.5em
+
 // NAVIGATION
 .contain-to-grid
   background: $BLACK url(image_path('textures/navy.png'))
@@ -197,7 +202,7 @@ footer
   background: whiteSmoke
   border: 2px solid #DDD
   border-radius: 4px
-  margin: 0 emCalc(40px) emCalc(40px)
+  margin: emCalc(40px)
   min-height: emCalc(200px)
 
 $charity-image-width: emCalc(200px)
@@ -504,6 +509,17 @@ $charity-image-width: emCalc(200px)
   width: 11%
 
 // LESSONS
+.empty-lessons
+  color: $GREY
+  font-weight: 500
+  padding: emCalc(40px)
+  text-align: center
+  a
+    border: 1px solid $GREEN
+    border-radius: 400px
+    margin-left: emCalc(10px)
+    padding: emCalc(5px) emCalc(14px)
+
 .section.lessons-index
   padding: 0 2px 2px
 
@@ -580,17 +596,17 @@ $charity-image-width: emCalc(200px)
     border-radius: 0 0 0 2px
 
 .user-details
-  margin: emCalc(6px) 0 0
+  margin: emCalc(8px) 0 0
 
 .user-name
-  font-size: emCalc(23px)
+  font-size: emCalc(18px)
   font-weight: 700
 
 .user-tags
-  margin-top: emCalc(5px)
+  margin-top: emCalc(7px)
   a
     border: 1px solid $GREEN
-    border-radius: 4px
+    border-radius: 3px
     font-size: emCalc(13px)
     font-weight: 500
     padding: emCalc(2px) emCalc(10px) emCalc(1px)
@@ -598,8 +614,9 @@ $charity-image-width: emCalc(200px)
       margin-right: emCalc(8px)
 
 .user-tag
+  display: inline-block
   a
-    margin-right: emCalc(10px)
+    margin-right: emCalc(8px)
 
 .user-stats
   margin: emCalc(11px) emCalc(13px) 0 0
@@ -628,7 +645,7 @@ $charity-image-width: emCalc(200px)
 
 .user-description
   background: whiteSmoke
-  border-top: 1px solid #EEE
+  border-top: 2px solid #DDD
   color: $GREY
   display: none
   font-weight: 500

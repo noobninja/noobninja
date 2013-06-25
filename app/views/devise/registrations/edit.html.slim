@@ -16,8 +16,10 @@
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
           = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
           = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), input_html: { multiple: true }
+          .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions
         .form-actions
           = f.button :submit, "UPDATE PROFILE", class: "large radius button expand"
+    = render 'layouts/footer'
 / h3 Cancel my account
 / p
 /   | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
