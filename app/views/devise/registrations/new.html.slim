@@ -9,7 +9,10 @@
           = f.input :email, required: true
           = f.input :password, required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
-          = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
+          / = f.label :chat_type, "I prefer to use..."
+          / = f.input :chat_type, as: :radio_buttons, collection: [["Google+ Hangouts"], ["Skype"]], checked: "Google+ Hangouts", label: false
+          = f.input :chat_email, label: "Google+ Hangouts Email (if different from above)"
+          / = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
           .form-ribbon Membership Details
           .membership-details
             | We understand that many of the best developers and designers out there prefer to offer free help, rather than collect a small fee for their time.

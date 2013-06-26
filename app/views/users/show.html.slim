@@ -28,7 +28,13 @@
                 = "$#{@user.donations}"
         .row
           .large-12.columns
-            .user-description= @user.description
+            .user-description
+              - if @user.description?
+                = @user.description
+              - else
+                = link_to edit_user_registration_path, class: "add_description" do
+                  i.icon-plus
+                  | ADD DESCRIPTION
     - if @offers.blank? && @requests.blank?
       .section
         .empty-lessons

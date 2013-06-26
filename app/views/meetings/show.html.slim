@@ -7,8 +7,11 @@
       - if @meeting.booked?
         .book-lesson
           ' You'll be meeting with #{@lesson.user.first_name} on
-          strong #{@meeting.start_time.strftime("%B %-d at %-l:%M %p")}&nbsp;
+          strong #{@meeting.start_time.strftime("%B %-d")}&nbsp;
+          ' at
+          strong #{@meeting.start_time.strftime("%-l:%M %p")}&nbsp;
           BR
+          | #{@lesson.user.first_name} will be sending you a Google+ Hangouts request to #{current_user.chat_email}
           ' Please be respectful and give advance warning if you will be unable to attend.
       - else
         .section-header

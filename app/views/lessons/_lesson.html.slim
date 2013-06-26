@@ -22,7 +22,7 @@
         .lesson-meeting
           = link_to new_request_path(lesson: lesson) do
             i.icon-time
-            | Request Lesson Time
+            | Request Lesson
       - if current_user == lesson.user
         .lesson-meeting
           = link_to lesson.type == "Offer" ? edit_offer_path(lesson) : edit_request_path(lesson) do

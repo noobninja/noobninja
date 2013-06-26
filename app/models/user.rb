@@ -16,11 +16,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :first_name, :last_name, :username, :description, :image, :image_cache,
-                  :tag_list, :time_zone, :member, :donations
+                  :tag_list, :time_zone, :member, :freebies, :donations, :chat_email
 
   validates :name, presence: true
-  validates :description, presence: true
-  validates :description, presence: true
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone"
 
   def name=(string)
@@ -28,6 +26,10 @@ class User < ActiveRecord::Base
     write_attribute :name, string
     write_attribute :first_name, name.first
     write_attribute :last_name, name.last if string.length > 1
+  end
+
+  def chat_email=(string)
+    write_attribute :chat_email, string.blank? ? self.email : string
   end
 
   def member?

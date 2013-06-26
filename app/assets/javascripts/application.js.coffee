@@ -24,6 +24,6 @@ jQuery ->
     , 7500)
 
   $('textarea').autosize()
-  $('.alert-box').delay(8000).slideToggle('slow')
+  # $('.alert-box').delay(8000).slideToggle('slow')
   $('.user-show-description').on 'click', (e)->
     $('.user-description').slideToggle()

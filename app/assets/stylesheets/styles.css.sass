@@ -62,6 +62,9 @@ form
 form label
   text-transform: capitalize
 
+textarea
+  resize: none
+
 .alert-box
   border: 1px solid #FFF
   font-weight: 600
@@ -355,6 +358,24 @@ $charity-image-width: emCalc(200px)
 #user_description
   min-height: 90px
 
+#new_user .user_chat_type, .edit_user .user_chat_type
+  background: whiteSmoke
+  border: 2px solid #DDD
+  border-radius: 4px
+  margin-bottom: 1em
+  padding: 13px 0 2px
+  text-align: center
+  label.control-label
+    // margin-top: 1em
+    // margin-bottom: 0.5em
+  label:not(.control-label)
+    display: inline-block
+    margin-right: 1em
+    // margin-bottom: 0.5em
+    // padding: emCalc(15px) 0 emCalc(5px) emCalc(15px)
+    input
+      margin-right: emCalc(10px)
+
 // NEW LESSON
 #new_lesson
   padding: emCalc(40px)
@@ -640,6 +661,15 @@ $charity-image-width: emCalc(200px)
   display: inline-block
   font-size: emCalc(19px)
   padding: emCalc(7px) emCalc(10px) emCalc(5px)
+  i
+    margin-right: emCalc(8px)
+
+.add_description
+  border: 1px solid $GREEN
+  border-radius: 3px
+  font-size: emCalc(13px)
+  font-weight: 500
+  padding: emCalc(5px) emCalc(15px) emCalc(4px)
   i
     margin-right: emCalc(8px)
 
