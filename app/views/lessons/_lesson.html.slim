@@ -1,6 +1,5 @@
 .lesson.group class=("offer" if lesson.type == "Offer")
   .lesson-image
-    / - if lesson.user.image_url != "/assets/fallback/default.png"
     = link_to image_tag(lesson.user.image_url(:thumb)), lesson.user
   - if lesson.amount?
     .lesson-amount
@@ -21,9 +20,9 @@
             = meeting.start_time.strftime("%-l:%M %p")
       - if lesson.type == "Offer" && (current_user != lesson.user)
         .lesson-meeting
-          = link_to lesson do
+          = link_to new_request_path(lesson: lesson) do
             i.icon-time
-            | Request Session
+            | Request Lesson Time
       - if current_user == lesson.user
         .lesson-meeting
           = link_to lesson.type == "Offer" ? edit_offer_path(lesson) : edit_request_path(lesson) do

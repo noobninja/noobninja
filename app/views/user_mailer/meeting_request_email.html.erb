@@ -1,0 +1,12 @@
+Hi <%= @reciever.first_name %>,
+<BR><BR/>
+<%= @requester.name %> would like to learn <%= @request.name %> and is available on:<BR/><BR/>
+<% @request.meetings.each do |meeting| %>
+  <strong><%= meeting.start_time.strftime("%B %-d at %-l:%M %p") %></strong>
+  <BR/><BR/>
+<% end %>
+Are you free? <%= link_to "Click here to book this lesson.", @url %>
+<BR/><BR/>
+Thanks for being an awesome part of this community!
+<BR/><BR/>
+-- NoobNinja Team

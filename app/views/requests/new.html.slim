@@ -10,15 +10,17 @@
             = error_message if @request.errors.full_messages.first == error_message
       = simple_form_for @request do |f|
         .form-ribbon.first-ribbon Request Lesson
-        = f.input :name, label: "I want to learn..."
+        = f.input :name, label: "I want to learn...", input_html: { value: @lesson ? @lesson.name : nil }
         = f.label :start_time, "I'm Available..."
         = f.simple_fields_for :meetings do |builder|
           = render 'meeting_fields', f: builder
         = link_to_add_fields "Add Availability", f, :meetings
-        = f.input :description, label: "Description (optional)"
-        = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), input_html: { multiple: true }
+        = f.input :description, label: "Description (optional)", input_html: { value: @lesson ? @lesson.description : nil }
+        = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), selected: @lesson.tags.map(&:name), input_html: { multiple: true }
         .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions
         = f.label :amount, "Tip Amount"
-        = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: 2000, as: :radio_buttons
+        = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @lesson ? @lesson.amount : 2000, as: :radio_buttons
+        - if @lesson
+          = f.input :user_to_notify, as: :hidden, input_html: { value: @lesson.user.id }
         = f.button :submit, "SUBMIT REQUEST", class: "large radius button expand"
     = render 'layouts/footer'

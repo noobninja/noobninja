@@ -4,6 +4,7 @@ class RequestsController < ApplicationController
   def new
     @request = current_user.requests.new
     @request.meetings.build
+    @lesson = Lesson.find(params[:lesson]) if params[:lesson]
   end
 
   def create
@@ -11,7 +12,11 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to lessons_path, notice: 'Request was successfully created.' }
+        if params[:request][:user_to_notify].present?
+          @user = User.find(params[:request][:user_to_notify])
+          UserMailer.meeting_request_email(current_user, @user, @request).deliver
+        end
+        format.html { redirect_to lessons_path, notice: "Request was successfully created #{"and #{@user.name} was notified"}." if params[:request][:user_to_notify].present?}
       else
         format.html { render action: "new" }
       end

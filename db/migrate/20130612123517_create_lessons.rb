@@ -1,7 +1,7 @@
 class CreateLessons < ActiveRecord::Migration
   def change
     create_table :lessons do |t|
-      t.string :name
+      t.text :name
       t.string :type
       t.integer :amount
       t.text :description
