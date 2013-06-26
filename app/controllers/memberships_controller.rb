@@ -10,7 +10,7 @@ class MembershipsController < ApplicationController
 
     if @membership.save_membership
       current_user.update_attributes(name: @membership.name) if @membership.name != current_user.name
-      redirect_to lessons_path, notice: @plan_id == 1 ? "Bank account verified! You can now start collecting tips for giving lessons." : "Thank you for subscribing. You can now give and get lessons, as well as collect tips!"
+      redirect_to lessons_path, notice: @plan_id == 1 ? "Bank account verified! You can now start collecting tips for giving lessons." : "Thank you for subscribing. You can now give and get lessons, as well as earn tips and donate!"
     else
       render :new
     end

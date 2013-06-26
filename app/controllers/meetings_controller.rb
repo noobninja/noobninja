@@ -9,7 +9,7 @@ class MeetingsController < ApplicationController
 
   def book_meeting
     @customer = @lesson.type == "Request" ? @lesson.user : current_user
-    @description = params[:donate].present? ? "Donation - #{current_user.name} (#{current_user.email}) via #{@customer.name} (#{@customer.email}) for #{@lesson.type} #{@lesson.id}" : "#{@customer.name} (#{@customer.email}) for #{@lesson.type} #{@lesson.id}"
+    @description = params[:donate].present? || @lesson.donate == true ? "Donation - #{@lesson.donate == true ? @lesson.user.name : current_user.name} (#{@lesson.donate == true ? @lesson.user.email : current_user.email}) via #{@customer.name} (#{@customer.email}) for #{@lesson.type} #{@lesson.id}" : "#{@customer.name} (#{@customer.email}) for #{@lesson.type} #{@lesson.id}"
 
     if params[:free].present?
       current_user.increment!(:freebies)
@@ -26,7 +26,7 @@ class MeetingsController < ApplicationController
       end
     end
 
-    current_user.increment!(:donations, (@lesson.amount / 100)) if params[:donate].present?
+    current_user.increment!(:donations, (@lesson.amount / 100)) if params[:donate].present? || @lesson.donate == true
     @lesson.update_attributes(booked: true) if @lesson.type == "Request"
     @meeting.update_attributes(booked: true)
     @meeting.users << current_user

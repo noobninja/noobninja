@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
           @user = User.find(params[:request][:user_to_notify])
           UserMailer.meeting_request_email(current_user, @user, @request).deliver
         end
-        format.html { redirect_to lessons_path, notice: "Request was successfully created #{"and #{@user.name} was notified"}." if params[:request][:user_to_notify].present?}
+        format.html { redirect_to lessons_path, notice: "Request was successfully created #{"and #{@user.name} was notified" if params[:request][:user_to_notify].present?}."}
       else
         format.html { render action: "new" }
       end

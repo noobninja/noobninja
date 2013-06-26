@@ -21,6 +21,7 @@
         = f.label :amount, "Tip Amount"
         - if current_user.member?
           = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: 2000, as: :radio_buttons
+          = f.input :donate, label: "Donate This Lesson's Earnings to Charity"
         - else
           = f.input :amount, label: false, collection: [["$0", 0]], checked: 0, as: :radio_buttons
           .provide-details

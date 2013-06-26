@@ -5,7 +5,7 @@ class Lesson < ActiveRecord::Base
   has_many :meetings, order: 'meetings.start_time'
   accepts_nested_attributes_for :meetings, allow_destroy: true
 
-  attr_accessible :amount, :booked, :description, :name, :tag_list, :type, :meetings_attributes, :user_to_notify
+  attr_accessible :amount, :booked, :description, :name, :tag_list, :type, :meetings_attributes, :donate, :user_to_notify
   attr_accessor :user_to_notify
 
   validates :name, presence: true

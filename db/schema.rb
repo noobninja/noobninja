@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130623170750) do
     t.integer  "amount"
     t.text     "description"
     t.boolean  "booked",      :default => false
+    t.boolean  "donate",      :default => false
     t.integer  "user_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false

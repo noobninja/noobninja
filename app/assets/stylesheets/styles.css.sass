@@ -431,27 +431,6 @@ $charity-image-width: emCalc(200px)
       margin-right: emCalc(10px)
     &:last-child
       margin: 0
-//     display: inline-block
-//     margin-top: 5px
-//     margin-right: emCalc(25px)
-//     &:last-child
-//       margin-right: 0
-//     input
-//       margin-right: emCalc(8px)
-
-// .request_amount, .offer_amount
-//   margin-bottom: 1.5em
-//   label.control-label
-//     margin-top: 1em
-//     margin-bottom: 0.5em
-//   label:not(.control-label)
-//     background: #F6F5EF
-//     border: 2px solid #DDDACE
-//     border-radius: 4px
-//     margin-bottom: 0.5em
-//     padding: emCalc(15px) 0 emCalc(5px) emCalc(15px)
-//     input
-//       margin-right: emCalc(10px)
 
 .provide-details
   background: whiteSmoke
@@ -462,6 +441,17 @@ $charity-image-width: emCalc(200px)
   margin-bottom: emCalc(20px)
   padding: emCalc(15px)
   text-align: center
+
+// NEW OFFER
+.offer_donate
+  background: whiteSmoke
+  border: 2px solid #DDD
+  border-radius: 4px
+  padding: emCalc(15px) 0 emCalc(5px)
+  margin-bottom: 1em
+  text-align: center
+  input
+    margin-right: emCalc(15px)
 
 // NEW MEMBERSHIP
 #new_membership, .edit_membership
@@ -570,7 +560,7 @@ $charity-image-width: emCalc(200px)
         &:hover
           color: $PURPLE
           border-color: $PURPLE
-          box-shadow: 0 1px 0 0 darken($PURPLE, 10%)
+          box-shadow: 0 1px 0 0 darken($PURPLE, 20%)
     li.teach
       a
         &:hover
@@ -866,14 +856,14 @@ $lesson-padding-top: emCalc(25px)
   a
     background: $PURPLE
     border: 1px solid $PURPLE
-    box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+    box-shadow: 0 2px 0 0 darken($PURPLE, 20%)
     color: #F1F3DD
 
 .lesson.offer > .lesson-content > .lesson-meetings > .lesson-meeting.active.booked_by_me
   a
     background: $PURPLE
     border: 1px solid $PURPLE
-    box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+    box-shadow: 0 2px 0 0 darken($PURPLE, 20%)
     color: #F1F3DD
 
 .lesson-meeting.booked
@@ -897,7 +887,7 @@ $lesson-padding-top: emCalc(25px)
   a
     background: $PURPLE
     border: 1px solid $PURPLE
-    box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+    box-shadow: 0 2px 0 0 darken($PURPLE, 20%) !important
     color: #F1F3DD
 
 .lesson-meeting.active.booked_by_me
@@ -910,12 +900,12 @@ $lesson-padding-top: emCalc(25px)
 //   a
 //     background: $PURPLE
 //     border-color: $PURPLE
-//     box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+//     box-shadow: 0 2px 0 0 darken($PURPLE, 20%)
 //     color: #F1F3DD
 //     &:hover
 //       background: $PURPLE
 //       border: 1px solid $PURPLE
-//       box-shadow: 0 2px 0 0 darken($PURPLE, 10%)
+//       box-shadow: 0 2px 0 0 darken($PURPLE, 20%)
 //       // color: #808080
 
 // .lesson-meeting.active.booked_by_me
@@ -938,7 +928,7 @@ $lesson-padding-top: emCalc(25px)
     margin-top: emCalc(20px)
 
 .book-lesson > .button
-  max-width: 50%
+  max-width: 60%
 
 // RESPONSIVE
 // We use this media query to add styles to any device that supports media queries

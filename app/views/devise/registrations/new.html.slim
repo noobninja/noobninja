@@ -11,7 +11,7 @@
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
           / = f.label :chat_type, "I prefer to use..."
           / = f.input :chat_type, as: :radio_buttons, collection: [["Google+ Hangouts"], ["Skype"]], checked: "Google+ Hangouts", label: false
-          = f.input :chat_email, label: "Google+ Hangouts Email (if different from above)"
+          = f.input :chat_email, label: "Google+ Hangouts Email", placeholder: "leave blank to use same email as above"
           / = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
           .form-ribbon Membership Details
           .membership-details
