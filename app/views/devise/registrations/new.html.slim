@@ -10,6 +10,12 @@
           = f.input :password, required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
           = f.input :chat_email, label: "Google+ Hangouts Email", placeholder: "leave blank to use same email as above"
+          .why-hangouts
+            ' Why hangouts
+            span ="[?]"
+          .why-hangouts-hidden
+            | Hangouts allow screensharing, which makes for more effective lessons - while Skype does not.
+
           .form-ribbon Membership Details
           .membership-details
             | We understand that many of the best developers and designers out there prefer to offer free help, rather than collect a small fee for their time.

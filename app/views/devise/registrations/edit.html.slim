@@ -13,6 +13,7 @@
           = f.input :name, required: true, autofocus: true
           = f.input :email, required: true
           = f.input :time_zone, required: true, priority: /US/, id: "customDropdown"
+          = f.input :chat_email, label: "Google+ Hangouts Email", placeholder: "leave blank to use same email as above"
           = f.input :description, required: true, label: "Technical Background", placeholder: "Please include Github, Dribbble, or any relevant URLs"
           = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), input_html: { multiple: true }
           .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions

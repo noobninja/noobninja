@@ -27,3 +27,6 @@ jQuery ->
   # $('.alert-box').delay(8000).slideToggle('slow')
   $('.user-show-description').on 'click', (e)->
     $('.user-description').slideToggle()
+
+  $('.why-hangouts').on 'click', (e) ->
+    $('.why-hangouts-hidden').slideToggle()

@@ -27,6 +27,8 @@ class MeetingsController < ApplicationController
     end
 
     current_user.increment!(:donations, (@lesson.amount / 100)) if params[:donate].present? || @lesson.donate == true
+    @lesson.user.increment!(:donations, (@lesson.amount / 100)) if @lesson.donate == true
+
     @lesson.update_attributes(booked: true) if @lesson.type == "Request"
     @meeting.update_attributes(booked: true)
     @meeting.users << current_user
