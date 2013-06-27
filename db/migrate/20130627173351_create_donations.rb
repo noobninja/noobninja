@@ -1,6 +1,7 @@
 class CreateDonations < ActiveRecord::Migration
   def change
     create_table :donations do |t|
+      t.string :charity
       t.integer :amount
       t.integer :via_user_id
       t.boolean :counted, default: false

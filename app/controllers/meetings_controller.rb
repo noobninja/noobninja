@@ -29,14 +29,11 @@ class MeetingsController < ApplicationController
 
 
     if @lesson.donate == true
-      @lesson.user.donations.create(amount: @amount, lesson_id: @lesson.id, via_user_id: current_user.id, counted: true)
-      current_user.donations.create(amount: @amount, lesson_id: @lesson.id)
+      @lesson.user.donations.create(charity: "charity: water", amount: @amount, lesson_id: @lesson.id, via_user_id: current_user.id, counted: true)
+      current_user.donations.create(charity: "charity: water",amount: @amount, lesson_id: @lesson.id)
     elsif params[:donate].present?
-      current_user.donations.create(amount: @amount, lesson_id: @lesson.id, counted: true)
+      current_user.donations.create(charity: "charity: water",amount: @amount, lesson_id: @lesson.id, counted: true)
     end
-
-    # current_user.increment!(:donations, (@lesson.amount / 100)) if params[:donate].present? || @lesson.donate == true
-    # @lesson.user.increment!(:donations, (@lesson.amount / 100)) if @lesson.donate == true
 
     @lesson.update_attributes(booked: true) if @lesson.type == "Request"
     @meeting.update_attributes(booked: true)

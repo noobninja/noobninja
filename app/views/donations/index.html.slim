@@ -8,14 +8,10 @@
         h1 Fundraising Goal
         .fundraising-charity
           .fundraising-charity-image= image_tag("charitywater.jpg")
-          / .welcome-charity-content
-          /   h2 charity: water
-          /   | Our fundraising goal this month is $5000 - in order to #{link_to "sponsor a water project", "http://www.charitywater.org/donate/sponsor-a-project", target: "_blank"}.
-          /   BR
-          /
         BR
         h4
-          | We've raised $#{@total} so far towards our $5000 goal.
+          | We'll be updating how much has been raised here shortly.
+          / | We've raised $#{@total} so far towards our $5000 goal.
         BR
         p
           | Our goal this month is to #{link_to "sponsor a water project", "http://www.charitywater.org/donate/sponsor-a-project", target: "_blank"}.
@@ -30,8 +26,9 @@
           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
         BR
         BR
-    .welcome-title
-      .welcome-ribbon
-        | Fundraising Activity
-    .section
-      = render @donations
+    - if @donations
+      .welcome-title
+        .welcome-ribbon
+          | Fundraising Activity
+      .section
+        = render @donations

@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130627173351) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "donations", :force => true do |t|
+    t.string   "charity"
     t.integer  "amount"
     t.integer  "via_user_id"
     t.boolean  "counted",     :default => false
