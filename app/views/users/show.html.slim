@@ -24,8 +24,9 @@
                 i.icon-reorder
                 | About
               .user-donations title="Amount Donated"
-                i.icon-heart
-                = "$#{@user.donations}"
+                = link_to donations_path
+                  i.icon-heart
+                  = "$#{@donated}"
         .row
           .large-12.columns
             .user-description
@@ -35,10 +36,16 @@
                 = link_to edit_user_registration_path, class: "add_description" do
                   i.icon-plus
                   | ADD DESCRIPTION
-    - if @offers.blank? && @requests.blank?
+    - if @upcoming.blank? && @offers.blank? && @requests.blank?
       .section
         .empty-lessons
           | You haven't offered or requested any help yet. #{link_to "Go to Dojo", lessons_path}
+    - if @upcoming.present?
+      .welcome-title
+        .welcome-ribbon
+          | Upcoming Lessons
+      .section
+        = render partial: "meetings/meeting", collection: @upcoming, as: :meeting
     - if @offers.present?
       .welcome-title
         .welcome-ribbon

@@ -1,5 +1,10 @@
 tags = %W[ c# java php javascript coffeescript android jquery c++ iphone asp.net python .net html mysql objective-c ios sql css ruby-on-rails c ruby django linux windows facebook osx wordpress ipad perl cocoa flash git r flex jquery node.js postgresql scala mongodb firefox google-chrome haskell vim sublime-text textmate photoshop illustrator web-design responsive-design mobile-design logo-design poster-design print-design typography illustration ]
 
+puts "CREATE TAGS"
+tags.each do |name|
+  ActsAsTaggableOn::Tag.create(name: name)
+end
+
 puts "CREATE USERS"
 User.create(
   email: "abreu.jamil@gmail.com",

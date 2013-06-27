@@ -3,6 +3,8 @@
     = link_to image_tag(lesson.user.image_url(:thumb)), lesson.user
   - if lesson.amount?
     .lesson-amount
+      - if lesson.donate?
+        i.icon-heart
       span $
       = lesson.cost
   .lesson-content

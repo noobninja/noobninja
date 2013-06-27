@@ -5,14 +5,25 @@
       = render partial: "lessons/lesson", object: @lesson, as: :lesson
     .section
       - if @meeting.booked?
+        .section-header
         .book-lesson
-          ' You'll be meeting with #{@lesson.user.first_name} on
-          strong #{@meeting.start_time.strftime("%B %-d")}&nbsp;
-          ' at
-          strong #{@meeting.start_time.strftime("%-l:%M %p")}&nbsp;
-          BR
-          | #{@lesson.user.first_name} will be sending you a Google+ Hangouts request to #{current_user.chat_email}
-          ' Please be respectful and give advance warning if you will be unable to attend.
+          .book-lesson-instructions
+            h3 Instructions
+            br
+            ' You'll be meeting with #{@lesson.user.first_name} on
+            br
+            strong #{@meeting.start_time.strftime("%B %-d")}&nbsp;
+            ' at
+            strong #{@meeting.start_time.strftime("%-l:%M %p")}&nbsp;
+            BR
+            strong #{@lesson.user.first_name} (#{@lesson.user.chat_email})
+            br
+            | should send a Google+ Hangouts request to
+            br
+            strong #{current_user.name} (#{current_user.chat_email})
+            BR
+            | The lesson is intended to be up to 10 minutes long, please be repectful of this time limit and give advance warning if you will be unable to attend.
+        .section-footer
       - else
         .section-header
         .book-lesson

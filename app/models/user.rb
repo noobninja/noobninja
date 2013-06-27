@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :requests
   has_one :membership
+  has_many :donations
   has_many :meeting_users
   has_many :users, through: :meeting_users
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,7 +18,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :first_name, :last_name, :username, :description, :image, :image_cache,
-                  :tag_list, :time_zone, :member, :freebies, :donations, :chat_email
+                  :tag_list, :time_zone, :member, :freebies, :chat_email
 
   validates :name, presence: true
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone"

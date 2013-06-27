@@ -398,6 +398,23 @@ $charity-image-width: emCalc(200px)
     input
       margin-right: emCalc(10px)
 
+// MEETING
+.meeting
+  border-bottom: 1px solid #DDD
+  color: $GREY
+  font-weight: 400
+  padding: emCalc(20px) emCalc(40px)
+  a
+    font-weight: 600
+  &:last-child
+    border: 0
+
+.meeting-user
+  display: inline-block
+  margin-right: emCalc(5px)
+  a
+    margin-right: emCalc(5px)
+
 // NEW LESSON
 #new_lesson
   padding: emCalc(40px)
@@ -474,6 +491,13 @@ $charity-image-width: emCalc(200px)
   text-align: center
   input
     margin-right: emCalc(15px)
+
+.session-booked
+  color: $PURPLE
+  display: inline-block
+  font-size: emCalc(13px)
+  font-weight: 500
+
 
 // NEW MEMBERSHIP
 #new_membership, .edit_membership
@@ -666,15 +690,20 @@ $charity-image-width: emCalc(200px)
     color: $GREEN
 
 .user-donations
-  background: $GREY
-  border-radius: 4px
-  box-shadow: 0 2px 0 0 darken($GREY, 15%)
-  color: #FFF
   display: inline-block
-  font-size: emCalc(19px)
-  padding: emCalc(7px) emCalc(10px) emCalc(5px)
-  i
-    margin-right: emCalc(8px)
+  a
+    background: $GREY
+    border-radius: 4px
+    box-shadow: 0 2px 0 0 darken($GREY, 15%)
+    color: #FFF
+    display: block
+    font-size: emCalc(19px)
+    padding: emCalc(7px) emCalc(10px) emCalc(5px)
+    i
+      margin-right: emCalc(8px)
+    &:hover
+      background: $GREEN
+      box-shadow: 0 2px 0 0 darken($GREEN, 15%)
 
 .add_description
   border: 1px solid $GREEN
@@ -780,6 +809,8 @@ $lesson-padding-top: emCalc(25px)
   span
     font-weight: 300
     margin-right: 4px
+  i
+    margin-right: emCalc(8px)
   &:after
     bottom: -1px
     border: solid transparent
@@ -951,6 +982,39 @@ $lesson-padding-top: emCalc(25px)
 
 .book-lesson > .button
   max-width: 60%
+
+.book-lesson-instructions
+  background: whiteSmoke
+  border: 2px solid #DDD
+  border-radius: 4px
+  font-weight: 500
+  margin: 1em auto
+  max-width: 60%
+  padding: emCalc(30px) emCalc(40px)
+
+// FUNDRAISING
+.fundraising-charity
+  // background: whiteSmoke
+  // border: 2px solid #DDD
+  // border-radius: 4px
+  // margin: emCalc(40px) emCalc(80px)
+  // min-height: emCalc(200px)
+
+.fundraising-charity-image
+  img
+    border: 2px solid #DDD
+    border-radius: 4px
+
+.donation
+  border-bottom: 1px solid #DDD
+  color: $GREY
+  font-size: emCalc(18px)
+  font-weight: 500
+  padding: emCalc(20px) emCalc(40px)
+  a
+    font-weight: 600
+  &:last-child
+    border: 0
 
 // RESPONSIVE
 // We use this media query to add styles to any device that supports media queries

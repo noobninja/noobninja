@@ -53,7 +53,7 @@
           - else
             = f.input :plan_id, label: "Select One:", collection: [["$20/month", 2], ["$10/month (billed yearly)", 3]], checked: 2, as: :radio_buttons
 
-        = f.button :submit, params[:teacher] ? "VERIFY ACCOUNT" : "START SUBSCRIPTION", class: "large radius button expand"
+        = f.button :submit, "START SUBSCRIPTION", class: "large radius button expand"
         .membership_footer
           p
             - if params[:teacher]

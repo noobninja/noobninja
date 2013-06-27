@@ -1,0 +1,2 @@
+.donation
+  | #{link_to donation.user.name, donation.user} has donated $#{donation.amount / 100}#{" via " if donation.via_user_id.present?}#{link_to User.find(donation.via_user_id).name, User.find(donation.via_user_id) if donation.via_user_id.present?} from #{link_to donation.lesson.name, donation.lesson}

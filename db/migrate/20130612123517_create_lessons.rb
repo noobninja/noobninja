@@ -5,6 +5,7 @@ class CreateLessons < ActiveRecord::Migration
       t.string :type
       t.integer :amount
       t.text :description
+      t.text :video_url
       t.boolean :booked, default: false
       t.boolean :donate, default: false
       t.references :user

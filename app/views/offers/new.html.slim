@@ -10,7 +10,7 @@
             = error_message if @offer.errors.full_messages.first == error_message
       = simple_form_for @offer do |f|
         .form-ribbon.first-ribbon Offer Lesson
-        = f.input :name, label: "I want to teach..."
+        = f.input :name, label: "I want to teach...", placeholder: "Please be specific - lesson should last up to 10 minutes"
         = f.label :start_time, "I'm Available..."
         = f.simple_fields_for :meetings do |builder|
           = render 'meeting_fields', f: builder

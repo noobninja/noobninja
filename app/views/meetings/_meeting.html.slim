@@ -1,0 +1,18 @@
+.meeting
+  ' Meeting with
+  - if meeting.lesson.user == current_user
+    - meeting.users.uniq.delete_if{|x| x == current_user }.each do |user|
+      .meeting-user
+        = link_to user.name, user
+        ' ( #{user.chat_email} )
+    ' on
+  - else
+    .meeting-user
+      = link_to meeting.lesson.user.name, meeting.lesson.user
+      ' ( #{meeting.lesson.user.chat_email} )
+    ' on
+  strong #{meeting.start_time.strftime("%B %-d")}&nbsp;
+  ' at
+  strong #{meeting.start_time.strftime("%-l:%M %p")}&nbsp;
+  ' for
+  = link_to meeting.lesson.name, meeting.lesson

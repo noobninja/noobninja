@@ -1,0 +1,37 @@
+.row
+  .small-12.large-12.columns
+    .section.top
+      = render 'layouts/flash'
+      .splash
+        .splash-left
+        .splash-right
+        h1 Fundraising Goal
+        .fundraising-charity
+          .fundraising-charity-image= image_tag("charitywater.jpg")
+          / .welcome-charity-content
+          /   h2 charity: water
+          /   | Our fundraising goal this month is $5000 - in order to #{link_to "sponsor a water project", "http://www.charitywater.org/donate/sponsor-a-project", target: "_blank"}.
+          /   BR
+          /
+        BR
+        h4
+          | We've raised $#{@total} so far towards our $5000 goal.
+        BR
+        p
+          | Our goal this month is to #{link_to "sponsor a water project", "http://www.charitywater.org/donate/sponsor-a-project", target: "_blank"}.
+          BR
+          |  NoobNinja collects all donations, and then submits a lump sum on behalf of all contributers once the goal is reached.
+          BR
+          | A typical water project can serve 150-300 people in a community. You’ll be recognized as the project sponsor, and you’ll receive a completion report when the work is finished.
+        BR
+        a href="https://twitter.com/share" class="twitter-share-button" data-url="http://noobninja.com/" data-text="NoobNinja - get and give 10-minute lessons on programming/design concepts for charity (and profit)" data-via="noobninjas" data-size="large" data-related="noobninjas"
+          | Tweet
+        javascript:
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        BR
+        BR
+    .welcome-title
+      .welcome-ribbon
+        | Fundraising Activity
+    .section
+      = render @donations

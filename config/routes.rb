@@ -3,7 +3,6 @@ Noobninja::Application.routes.draw do
     root to: 'lessons#index'
   end
   root to: 'users#welcome'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -13,6 +12,7 @@ Noobninja::Application.routes.draw do
   resources :offers
   resources :meetings
   resources :memberships
+  resources :donations
 
   match 'book_meeting/:id' => 'meetings#book_meeting', as: :book_meeting
 

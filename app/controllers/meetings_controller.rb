@@ -15,8 +15,9 @@ class MeetingsController < ApplicationController
       current_user.increment!(:freebies)
     else
       begin
+        @amount = @lesson.amount
         Stripe::Charge.create(
-          amount: @lesson.amount,
+          amount: @amount,
           currency: "usd",
           customer: @customer.membership.stripe_customer_id,
           description: @description
@@ -26,12 +27,22 @@ class MeetingsController < ApplicationController
       end
     end
 
-    current_user.increment!(:donations, (@lesson.amount / 100)) if params[:donate].present? || @lesson.donate == true
-    @lesson.user.increment!(:donations, (@lesson.amount / 100)) if @lesson.donate == true
+
+    if @lesson.donate == true
+      @lesson.user.donations.create(amount: @amount, lesson_id: @lesson.id, via_user_id: current_user.id, counted: true)
+      current_user.donations.create(amount: @amount, lesson_id: @lesson.id)
+    elsif params[:donate].present?
+      current_user.donations.create(amount: @amount, lesson_id: @lesson.id, counted: true)
+    end
+
+    # current_user.increment!(:donations, (@lesson.amount / 100)) if params[:donate].present? || @lesson.donate == true
+    # @lesson.user.increment!(:donations, (@lesson.amount / 100)) if @lesson.donate == true
 
     @lesson.update_attributes(booked: true) if @lesson.type == "Request"
     @meeting.update_attributes(booked: true)
-    @meeting.users << current_user
+
+    @meeting.users << current_user unless @meeting.users.include?(current_user)
+    @meeting.users << @lesson.user unless @meeting.users.include?(@lesson.user)
 
     respond_to do |format|
       format.html { redirect_to @meeting, notice: 'Lesson successfully booked.' }

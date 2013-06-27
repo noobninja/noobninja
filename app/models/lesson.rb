@@ -3,6 +3,10 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :user
   has_many :meetings, order: 'meetings.start_time'
+  has_many :meeting_users, through: :meetings
+  has_many :users, through: :meeting_users
+  has_many :donations
+
   accepts_nested_attributes_for :meetings, allow_destroy: true
 
   attr_accessible :amount, :booked, :description, :name, :tag_list, :type, :meetings_attributes, :donate, :user_to_notify
