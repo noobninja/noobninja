@@ -1,6 +1,6 @@
 class DonationsController < ApplicationController
   def index
     @donations = Donation.where(counted: true)
-    @total = @donations.map(&:amount).inject(:+) / 100
+    @total = @donations ? @donations.map(&:amount).inject(:+) / 100 : 0
   end
 end
