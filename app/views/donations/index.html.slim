@@ -20,12 +20,8 @@
           BR
           | A typical water project can serve 150-300 people in a community. You’ll be recognized as the project sponsor, and you’ll receive a completion report when the work is finished.
         BR
-        a href="https://twitter.com/share" class="twitter-share-button" data-url="http://noobninja.com/" data-text="NoobNinja - get and give 10-minute lessons on programming/design concepts for charity (and profit)" data-via="noobninjas" data-size="large" data-related="noobninjas"
-          | Tweet
-        javascript:
-          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-        BR
-        BR
+        div style="text-align: center; margin-bottom: 2em"
+          = render "layouts/twitter"
     - if @donations
       .welcome-title
         .welcome-ribbon
