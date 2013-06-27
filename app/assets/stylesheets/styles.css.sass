@@ -99,6 +99,7 @@ form.custom .custom.dropdown
 
 .tag-suggestions
   color: $GREY
+  font-size: emCalc(12px)
   font-weight: 300
   margin-bottom: 1.5em
 
@@ -962,6 +963,12 @@ $lesson-padding-top: emCalc(25px)
     height: 1px
     margin: 0
 
+  .top-bar-section ul li.active > a
+    &:after
+      border-width: 0
+
+  .top-bar-section ul.right li .dropdown
+    background: #333
   // WELCOME
   .welcome-boxes
     margin: 0 emCalc(20px) emCalc(20px)
@@ -1007,6 +1014,18 @@ $lesson-padding-top: emCalc(25px)
   .user-stats
     margin: emCalc(20px) 0
     text-align: center
+
+  // LESSONS
+  .lessons-bar
+    ul
+      li
+        display: block
+        margin-bottom: 1em
+        text-align: center
+        &:last-child
+          margin-bottom: 0
+        a
+          padding: emCalc(10px) 0
 
 
   // LESSON
