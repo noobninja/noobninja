@@ -15,9 +15,9 @@
             br
             ' You'll be meeting with #{@lesson.user.first_name} on
             br
-            strong #{@meeting.start_time.in_time_zone.strftime("%B %-d")}&nbsp;
+            strong #{Time.zone.parse(@meeting.start_time.to_s).strftime("%B %-d")}&nbsp;
             ' at
-            strong #{@meeting.start_time.in_time_zone.strftime("%-l:%M %p")}&nbsp;
+            strong #{Time.zone.parse(@meeting.start_time.to_s).strftime("%-l:%M %p")}&nbsp;
             BR
             strong #{@lesson.user.first_name} (#{@lesson.user.chat_email})
             br
@@ -34,9 +34,9 @@
             div
               ' I can help #{@lesson.user.first_name} learn about the topic specified above on
               br
-              strong #{@meeting.start_time.in_time_zone.strftime("%B %-d")}&nbsp;
+              strong #{Time.zone.parse(@meeting.start_time.to_s).strftime("%B %-d")}&nbsp;
               ' at
-              strong #{@meeting.start_time.in_time_zone.strftime("%-l:%M %p")}&nbsp;
+              strong #{Time.zone.parse(@meeting.start_time.to_s).strftime("%-l:%M %p")}&nbsp;
               - if @lesson.amount?
                 ' for
                 strong $#{@lesson.cost}
@@ -44,9 +44,9 @@
             div
               ' I want to learn about the topic specified above from #{@lesson.user.first_name} on
               br
-              strong #{@meeting.start_time.in_time_zone.strftime("%B %-d")}&nbsp;
+              strong #{Time.zone.parse(@meeting.start_time.to_s).strftime("%B %-d")}&nbsp;
               ' at
-              strong #{@meeting.start_time.in_time_zone.strftime("%-l:%M %p")}&nbsp;
+              strong #{Time.zone.parse(@meeting.start_time.to_s).strftime("%-l:%M %p")}&nbsp;
               - if @lesson.amount?
                 ' for
                 strong $#{@lesson.cost}
