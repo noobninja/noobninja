@@ -20,6 +20,7 @@
             = meeting.start_time.in_time_zone.strftime("%B %-d")
             span |
             = meeting.start_time.in_time_zone.strftime("%-l:%M %p")
+            = Time.zone.parse(meeting.start_time.to_s)
       - if lesson.type == "Offer" && (current_user != lesson.user)
         .lesson-meeting
           = link_to new_request_path(lesson: lesson) do
