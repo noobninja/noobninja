@@ -15,6 +15,7 @@ Noobninja::Application.routes.draw do
   resources :donations
 
   match 'book_meeting/:id' => 'meetings#book_meeting', as: :book_meeting
+  match 'welcome' => 'users#welcome', as: :welcome
 
   # authenticated :user do
   #   devise_for :users do

@@ -19,7 +19,14 @@
         = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), input_html: { multiple: true }
         .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions
         = f.label :amount, "Tip Amount"
-        = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @request.amount, as: :radio_buttons
-
+        - if current_user.member?
+          = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @lesson.present? ? @lesson.amount : 2000, as: :radio_buttons
+          = f.input :donate, label: "Donate This Lesson's Earnings to Charity"
+        - else
+          = f.input :amount, label: false, collection: [["$0", 0]], checked: 0, as: :radio_buttons
+          .provide-details
+            | Please #{link_to "provide your account details", new_membership_path(teacher: true)}
+            br
+            | to attach a tip to this lesson
         = f.button :submit, "UPDATE REQUEST", class: "large radius button expand"
     = render 'layouts/footer'
