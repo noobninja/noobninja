@@ -1115,7 +1115,7 @@ $lesson-padding-top: emCalc(25px)
     border-radius: 0 0 3px 3px
     padding: $lesson-padding-top-responsive 0
     margin-left: $lesson-image-size-responsive + emCalc(20px)
-    margin-right: emCalc(50px)
+    margin-right: 0
 
   .lesson-name
     display: block
@@ -1124,11 +1124,18 @@ $lesson-padding-top: emCalc(25px)
     display: block
     text-align: center
     a
+      padding-top: emCalc(12px)
+      padding-bottom: emCalc(12px)
       i
         float: left
 
   .book-lesson > .button
     max-width: 100%
+
+  .empty-lessons a
+    display: block
+    margin-top: 1em
+    padding: emCalc(20px) 0
 
 // Used to alter styles for screens at least 768px wide. This is where the grid changes.
 @media only screen and (min-width: 768px)
