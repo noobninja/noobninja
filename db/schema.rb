@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20130627173351) do
     t.string   "time_zone"
     t.string   "chat_email"
     t.integer  "freebies",               :default => 0
-    t.boolean  "member",                 :default => false
+    t.boolean  "flagged",                :default => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end

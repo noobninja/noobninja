@@ -43,7 +43,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :time_zone
       t.string  :chat_email
       t.integer :freebies, default: 0
-      t.boolean :member, default: false
+      t.boolean :flagged, default: false
 
       t.timestamps
     end

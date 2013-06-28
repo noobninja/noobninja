@@ -1,2 +1,11 @@
 .empty-lessons
-  | There aren't any #{params[:type].present? ? params[:type].pluralize : 'lessons'} that match this criteria at the moment. #{link_to "Clear Filters", lessons_path}
+  | There aren't any #{params[:type].present? ? params[:type].pluralize : 'lessons'} that match this criteria at the moment.
+  - if params[:type].blank? && params[:type].blank?
+    = link_to new_request_path do
+      i.icon-plus style="margin-right: 8px"
+      | Request Lesson
+    = link_to new_offer_path do
+      i.icon-plus style="margin-right: 8px"
+      | Offer Lesson
+  - else
+    = link_to "Clear Filters", lessons_path

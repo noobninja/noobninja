@@ -17,9 +17,9 @@
         .lesson-meeting class=("#{'active' if current_page?(meeting_path(meeting))} #{'booked' if meeting.booked? && !meeting.users.include?(current_user)} #{'booked_by_me' if meeting.booked? && meeting.users.include?(current_user)}")
           = link_to meeting do
             i.icon-time
-            = meeting.start_time.strftime("%B %-d")
+            = meeting.start_time.in_time_zone.strftime("%B %-d")
             span |
-            = meeting.start_time.strftime("%-l:%M %p")
+            = meeting.start_time.in_time_zone.strftime("%-l:%M %p")
       - if lesson.type == "Offer" && (current_user != lesson.user)
         .lesson-meeting
           = link_to new_request_path(lesson: lesson) do
