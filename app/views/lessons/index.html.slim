@@ -37,6 +37,8 @@
       p
         ' Time.zone.today
         = Time.zone.today
+      p
+        = Chronic.time_class
 
       - if @lessons.blank? && @inactive_lessons.blank?
         = render "lessons/empty"
