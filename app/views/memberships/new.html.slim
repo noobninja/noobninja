@@ -19,14 +19,10 @@
     .section.top
       = render 'layouts/flash'
       = simple_form_for @membership do |f|
-        .form-ribbon.first-ribbon Subscription Details
+        .form-ribbon.first-ribbon Account Details
         div id="stripe_error" style="color: red; margin-bottom: 1em;"
           noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
         = f.input :stripe_card_token, as: :hidden
-        - if params[:teacher]
-          .row
-            .large-12.columns
-              div style="margin-bottom: 1em" Enter card information in order to recieve payments. If you would also like to request lessons from others, please choose a monthly or yearly subscription.
         .row
           .large-12.columns
             = f.input :name, input_html: { value: current_user.name }
