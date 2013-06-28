@@ -41,6 +41,14 @@ class MeetingsController < ApplicationController
     @meeting.users << current_user unless @meeting.users.include?(current_user)
     @meeting.users << @lesson.user unless @meeting.users.include?(@lesson.user)
 
+    if @lesson.type == "Request"
+      UserMailer.meeting_booked_email(@lesson.user, current_user, @meeting).deliver
+      UserMailer.meeting_confirmation_email(current_user, @lesson.user, @meeting).deliver
+    else
+      UserMailer.meeting_booked_email(current_user, @lesson.user, @meeting).deliver
+      UserMailer.meeting_confirmation_email(@lesson.user, current_user, @meeting).deliver
+    end
+
     respond_to do |format|
       format.html { redirect_to @meeting, notice: 'Lesson successfully booked.' }
     end
@@ -55,7 +63,7 @@ class MeetingsController < ApplicationController
   def user_subscribed?
     if current_user.teacher? && @lesson.type != "Request"
       redirect_to edit_membership_path(current_user.membership), notice: "Help support NoobNinja by subscribing before requesting help."
-    elsif !current_user.member? && @lesson.type != "Request"
+    elsif !current_user.member? && @lesson.type != "Request" && @lesson.amount > 0
       redirect_to new_membership_path, notice: "Help support NoobNinja by subscribing before requesting help."
     end
   end

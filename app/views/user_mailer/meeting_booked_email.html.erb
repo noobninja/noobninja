@@ -1,0 +1,17 @@
+Hi <%= @reciever.first_name %>,
+<BR><BR/>
+<%= @requester.name %> has just booked <%= @lesson.name %> on:
+<BR/><BR/>
+<strong><%= @meeting.start_time.strftime("%B %-d at %-l:%M %p") %></strong>
+<BR/><BR/>
+At the appropriate time, please send a Google+ Hangout invitation to the following email:
+<BR/><BR/>
+<%= @requester.chat_email %>
+<BR/><BR/>
+Lessons are intended to be up to 10 minutes long, please be repectful of this time limit and give advance warning if you will be unable to attend.
+<BR/><BR/>
+<%= link_to "Click here to view this lesson.", @url %>
+<BR/><BR/>
+Thanks for being an awesome part of this community!
+<BR/><BR/>
+-- NoobNinja Team

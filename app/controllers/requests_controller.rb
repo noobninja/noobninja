@@ -46,10 +46,11 @@ class RequestsController < ApplicationController
   end
 
   def user_subscribed?
+     @lesson = Lesson.find(params[:lesson]) if params[:lesson]
     if current_user.teacher?
-      redirect_to edit_membership_path(current_user.membership), notice: "Help support NoobNinja by subscribing before requesting help."
+      redirect_to edit_membership_path(current_user.membership), notice: "Help support NoobNinja by subscribing before requesting help." unless (@lesson.present? && @lesson.amount == 0)
     elsif !current_user.member?
-      redirect_to new_membership_path, notice: "Help support NoobNinja by subscribing before requesting help."
+      redirect_to new_membership_path, notice: "Help support NoobNinja by subscribing before requesting help." unless (@lesson.present? && @lesson.amount == 0)
     end
   end
 end

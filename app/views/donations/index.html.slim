@@ -20,9 +20,9 @@
           BR
           | A typical water project can serve 150-300 people in a community. You’ll be recognized as the project sponsor, and you’ll receive a completion report when the work is finished.
         BR
-        div style="text-align: center; margin-bottom: 2em"
+        div style="text-align: center; padding-bottom: 2em"
           = render "layouts/twitter"
-    - if @donations
+    - if @donations.present?
       .welcome-title
         .welcome-ribbon
           | Fundraising Activity

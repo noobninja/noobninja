@@ -10,16 +10,24 @@
             = error_message if @request.errors.full_messages.first == error_message
       = simple_form_for @request do |f|
         .form-ribbon.first-ribbon Request Lesson
-        = f.input :name, label: "I want to learn...", input_html: { value: @lesson ? @lesson.name : nil }
+        = f.input :name, label: "I want to learn...", input_html: { value: @lesson.present? ? @lesson.name : nil }
         = f.label :start_time, "I'm Available..."
         = f.simple_fields_for :meetings do |builder|
           = render 'meeting_fields', f: builder
         = link_to_add_fields "Add Availability", f, :meetings
-        = f.input :description, label: "Description (optional)", input_html: { value: @lesson ? @lesson.description : nil }
-        = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), selected: @lesson ? @lesson.tags.map(&:name) : nil, input_html: { multiple: true }
+        = f.input :description, label: "Description (optional)", input_html: { value: @lesson.present? ? @lesson.description : nil }
+        = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), selected: @lesson.present? ? @lesson.tags.map(&:name) : nil, input_html: { multiple: true }
         .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions
         = f.label :amount, "Tip Amount"
-        = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @lesson ? @lesson.amount : 2000, as: :radio_buttons
+        - if current_user.member?
+          = f.input :amount, label: false, collection: [["$0", 0], ["$15", 1500], ["$20", 2000], ["$25", 2500]], checked: @lesson.present? ? @lesson.amount : 2000, as: :radio_buttons
+          = f.input :donate, label: "Donate This Lesson's Earnings to Charity"
+        - else
+          = f.input :amount, label: false, collection: [["$0", 0]], checked: 0, as: :radio_buttons
+          .provide-details
+            | Please #{link_to "provide your account details", new_membership_path(teacher: true)}
+            br
+            | to attach a tip to this lesson
         - if @lesson
           = f.input :user_to_notify, as: :hidden, input_html: { value: @lesson.user.id }
         = f.button :submit, "SUBMIT REQUEST", class: "large radius button expand"
