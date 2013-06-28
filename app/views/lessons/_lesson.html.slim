@@ -18,6 +18,8 @@
           = link_to meeting do
             i.icon-time
             = Time.zone.parse(meeting.start_time.to_s).strftime("%B %-d")
+            = meeting.start_time
+            = Time.zone.parse(meeting.start_time.to_s)
             span |
             = Time.zone.parse(meeting.start_time.to_s).strftime("%-l:%M %p")
       - if lesson.type == "Offer" && (current_user != lesson.user)
