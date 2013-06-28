@@ -20,9 +20,10 @@
                     .user-tag= link_to tag, root_path(tag: tag.name)
           .large-3.columns
             .user-stats
-              .user-show-description
-                i.icon-reorder
-                | About
+              - if @user.description? || @user == current_user
+                .user-show-description
+                  i.icon-reorder
+                  | About
               .user-donations title="Amount Donated"
                 = link_to donations_path
                   i.icon-heart
@@ -32,15 +33,15 @@
             .user-description
               - if @user.description?
                 = @user.description
-              - else
+              - elsif @user == current_user
                 = link_to edit_user_registration_path, class: "add_description" do
                   i.icon-plus
                   | ADD DESCRIPTION
-    - if @upcoming.blank? && @offers.blank? && @requests.blank?
+    - if @upcoming.blank? && @offers.blank? && @requests.blank? && @user == current_user
       .section
         .empty-lessons
           | You haven't offered or requested any help yet. #{link_to "Go to Dojo", lessons_path}
-    - if @upcoming.present?
+    - if @upcoming.present? && @user == current_user
       .welcome-title
         .welcome-ribbon
           | Upcoming Lessons
@@ -49,13 +50,13 @@
     - if @offers.present?
       .welcome-title
         .welcome-ribbon
-          | Lesson's I've Offered
+          | Lessons Offered
       .section
         = render partial: "lessons/lesson", collection: @offers, as: :lesson
     - if @requests.present?
       .welcome-title
         .welcome-ribbon
-          | Lesson's I've Requested
+          | Lesson Requested
       .section
         = render partial: "lessons/lesson", collection: @requests, as: :lesson
     = render 'layouts/footer'
