@@ -3,6 +3,9 @@
     .section.top
       = render 'layouts/flash'
       = render partial: "lessons/lesson", object: @lesson, as: :lesson
+      - if @meeting.lesson.description.present?
+        .meeting-lesson-description style="border-top: 2px solid #DDD; background: whiteSmoke; border-radius: 0 0 4px 4px; color: #706C75; font-weight: 400; padding: 20px 40px"
+          = @meeting.lesson.description
     .section
       - if @meeting.booked?
         .section-header
@@ -68,9 +71,10 @@
               | BOOK LESSON AND GIVE $#{@lesson.cost} TO CHARITY
           - else
             = link_to book_meeting_path(@meeting), class: "large radius button" do
-              - if @lesson.donate?
-                | BOOK LESSON AND GIVE $#{@lesson.cost} TO CHARITY
-              - else
-                | BOOK LESSON FOR $#{@lesson.cost}
+              | BOOK LESSON FOR $#{@lesson.cost}
+            - if @lesson.donate?
+              div style="margin-top: 2em"
+                i.icon-heart style="margin-right: 10px"
+                | Proceeds from this lesson go towards our #{link_to "fundraising goal", donations_path}
         .section-footer
     = render 'layouts/footer'
