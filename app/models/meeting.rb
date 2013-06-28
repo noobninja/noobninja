@@ -7,6 +7,7 @@ class Meeting < ActiveRecord::Base
   validates :start_time, presence: true
 
   def start_time=(input)
-    write_attribute :start_time, input.class == DateTime ? input : Chronic.parse(input)
+    zone = self.lesson.user.time_zone
+    write_attribute :start_time, input.class == DateTime ? input : ActiveSupport::TimeZone[zone].parse(input).utc
   end
 end

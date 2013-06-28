@@ -22,24 +22,6 @@
             ul
               = collection_select :lesson, :tags, @lesson_tags, :slug, :name, {include_blank: true, selected: @selected_tag.try(:slug)}, {class: "select2-select"}
     .section
-      p
-        ' Time.zone
-        = Time.zone
-      p
-        ' Time.now
-        = Time.now
-      p
-        ' Time.now.utc
-        = Time.now.utc
-      p
-        ' Time.zone.now
-        = Time.zone.now
-      p
-        ' Time.zone.today
-        = Time.zone.today
-      p
-        = Chronic.time_class
-
       - if @lessons.blank? && @inactive_lessons.blank?
         = render "lessons/empty"
       - else

@@ -1,7 +1,7 @@
 .datetimepicker.input-append.date
   .row.collapse
     .large-10.small-10.columns
-      = f.text_field :start_time, "data-format" => "MM/dd/yyyy HH:mm PP", value: f.object.start_time.present? ? f.object.start_time.in_time_zone : (DateTime.now.in_time_zone.beginning_of_hour + 1.hour).strftime("%m/%d/%Y %r")
+      = f.text_field :start_time, "data-format" => "dd/MM/yyyy HH:mm PP", value: f.object.start_time.present? ? f.object.start_time.in_time_zone : (DateTime.now.in_time_zone.beginning_of_hour + 1.hour).strftime("%m/%d/%Y %r")
     .large-2.small-2.columns
       span.add-on.postfix
         i data-time-icon="icon-time" data-date-icon="icon-calendar"
