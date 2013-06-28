@@ -16,8 +16,6 @@
           = render 'meeting_fields', f: builder
         = link_to_add_fields "Add Availability", f, :meetings
         = f.input :description, label: "Description (optional)"
-        / = f.input :video_url, as: :string
-        / .tag-suggestions You can record your Hangout and paste the URL here
         = f.input :tag_list, label: "Tags", collection: ActsAsTaggableOn::Tag.all.map(&:name), input_html: { multiple: true }
         .tag-suggestions * #{mail_to "sensei@noobninja.com", "contact us", encode: "hex", target: "_blank"} with new tag suggestions
         = f.label :amount, "Tip Amount"
